@@ -1,0 +1,77 @@
+<nav ui-nav>
+  <ul class="nav">
+    <li class="nav-header m-v-sm hidden-folded">
+      Allo Fitness Backend
+    </li>
+
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="pull-right up"><b class="badge no-bg"></b></i>
+        <i class="icon mdi-social-location-city cl-20"></i>
+        <span class="font-normal">Club</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="club.list">Liste des Clubs</a>
+        </li>
+      </ul>
+    </li>
+
+
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="pull-right up"><b class="badge no-bg"></b></i>
+        <i class="icon mdi-social-person cl-20"></i>
+        <span class="font-normal">Coach</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="coach.list">Liste des Coachs</a>
+        </li>
+      </ul>
+    </li>
+
+
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa  fa-caret-down"></i>
+        </span>
+        <i class="pull-right up"><b class="badge no-bg"></b></i>
+        <i class="icon mdi-social-people cl-20"></i>
+        <span class="font-normal">Membre</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dashboard">Liste des Membres</a>
+        </li>
+      </ul>
+    </li>
+
+
+
+    <li ui-sref-active="active">
+      <a md-ink-ripple>
+        <span class="pull-right text-muted">
+          <i class="fa fa-caret-down"></i>
+        </span>
+        <i class="pull-right up"><b class="badge no-bg"></b></i>
+        <i class="icon fa fa-home cl-20"></i>
+        <span class="font-normal">Admin</span>
+      </a>
+      <ul class="nav nav-sub">
+        <li ui-sref-active="active">
+          <a md-ink-ripple ui-sref="app.dashboard">Liste des Admins</a>
+        </li>
+      </ul>
+    </li>
+
+
+  </ul>
+</nav>

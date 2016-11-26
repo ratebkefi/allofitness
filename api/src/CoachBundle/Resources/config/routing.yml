@@ -1,0 +1,3 @@
+api_coach:
+    resource: "@CoachBundle/Resources/config/routing/coach.yml"
+    prefix: /

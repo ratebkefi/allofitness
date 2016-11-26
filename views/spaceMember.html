@@ -1,0 +1,58 @@
+<!-- Header -->
+<div ng-include="'views/layout/header.html'"></div>
+
+<!-- Carousel -->
+<div ng-include="'views/components/clubSlider.html'"></div>
+<!-- /carousel -->
+
+<div class="section animated fadeInRight">
+    <div class="container">
+        <h1 class="classic-title"><span>Inscription Club</span></h1>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+
+                <div id="form-container">
+
+                    <div class="page-header text-center">
+                        <h2>Let's Be Friends</h2>
+
+                        <!-- the links to our nested states using relative paths -->
+                        <!-- add the active class if the state matches our ui-sref -->
+                        <div id="status-buttons" class="text-center">
+                            <a ui-sref-active="active" ui-sref=".activity"><span>1</span> Activités</a>
+                            <a ui-sref-active="active" ui-sref=".amenities"><span>2</span> Equipements</a>
+                            <a ui-sref-active="active" ui-sref=".comfort"><span>3</span> Confort</a>
+                            <a ui-sref-active="active" ui-sref=".services"><span>3</span> Services</a>
+                        </div>
+                    </div>
+
+                    <!-- use ng-submit to catch the form submission and use our Angular function -->
+                    <form id="signup-form" ng-submit="processForm()">
+                        <!-- our nested state views will be injected here -->
+                        <div id="form-views" ui-view>
+                            <div ng-include="'views/components/form-activity.html'"></div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <!-- show our formData as it is being typed -->
+  <pre>
+    {{ formData }}
+  </pre>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>
+
+<script>
+    document.createElement('ui-select');
+    document.createElement('ui-select-match');
+    document.createElement('ui-select-choices');
+</script>

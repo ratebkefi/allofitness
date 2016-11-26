@@ -1,0 +1,700 @@
+<?php
+
+namespace CoachBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CoachInfo
+ *
+ * @ORM\Table(name="coach_info")
+ * @ORM\Entity(repositoryClass="CoachBundle\Repository\CoachInfoRepository")
+ */
+class CoachInfo
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", inversedBy="coachInfo")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $idUser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CommunBundle\Entity\ListPackage", inversedBy="coachInfo")
+     * @ORM\JoinColumn(name="id_package", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idPackage;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CommunBundle\Entity\Adress", inversedBy="coachInfo")
+     * @ORM\JoinColumn(name="id_adress", referencedColumnName="id")
+     */
+    private $idAdress;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CoachBundle\Entity\CoachCourse", mappedBy="idCoach", cascade={"remove"})
+     */
+    private $coachCourse;
+
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=150)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=150)
+     */
+    private $lastName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birth_date", type="date")
+     */
+    private $birthDate;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="registered_newsletter", type="boolean", nullable=true)
+     */
+    private $registeredNewsletter;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_sponsor", type="integer", nullable=true)
+     */
+    private $idSponsor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_of_course", type="text", nullable=true)
+     */
+    private $typeOfCourse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="displacement_areas", type="text", nullable=true)
+     */
+    private $displacementAreas;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diploma", type="string", length=150, nullable=true)
+     */
+    private $diploma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=150)
+     */
+    private $photo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kbis", type="string", length=150, nullable=true)
+     */
+    private $kbis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="business_card", type="string", length=150, nullable=true)
+     */
+    private $businessCard;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=45)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rib", type="string", length=150, nullable=true)
+     */
+    private $rib;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="moy_reviews", type="float", scale=2, options={"default"=0})
+     */
+    private $moyReviews;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_dat", type="datetime", nullable=true)
+     */
+    private $createDat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CommunBundle\Entity\ListAd", inversedBy="coachInfo")
+     * @ORM\JoinColumn(name="id_ad", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idAd;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+       $this->createDat = new \DateTime();
+        $this->moyReviews = 0;
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return CoachInfo
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return CoachInfo
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return CoachInfo
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set birthDate
+     *
+     * @param \DateTime $birthDate
+     *
+     * @return CoachInfo
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthDate
+     *
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * Set registeredNewsletter
+     *
+     * @param boolean $registeredNewsletter
+     *
+     * @return CoachInfo
+     */
+    public function setRegisteredNewsletter($registeredNewsletter)
+    {
+        $this->registeredNewsletter = $registeredNewsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get registeredNewsletter
+     *
+     * @return boolean
+     */
+    public function getRegisteredNewsletter()
+    {
+        return $this->registeredNewsletter;
+    }
+
+    /**
+     * Set idSponsor
+     *
+     * @param integer $idSponsor
+     *
+     * @return CoachInfo
+     */
+    public function setIdSponsor($idSponsor)
+    {
+        $this->idSponsor = $idSponsor;
+
+        return $this;
+    }
+
+    /**
+     * Get idSponsor
+     *
+     * @return integer
+     */
+    public function getIdSponsor()
+    {
+        return $this->idSponsor;
+    }
+
+    /**
+     * Set typeOfCourse
+     *
+     * @param string $typeOfCourse
+     *
+     * @return CoachInfo
+     */
+    public function setTypeOfCourse($typeOfCourse)
+    {
+        $this->typeOfCourse = $typeOfCourse;
+
+        return $this;
+    }
+
+    /**
+     * Get typeOfCourse
+     *
+     * @return string
+     */
+    public function getTypeOfCourse()
+    {
+        return $this->typeOfCourse;
+    }
+
+    /**
+     * Set displacementAreas
+     *
+     * @param string $displacementAreas
+     *
+     * @return CoachInfo
+     */
+    public function setDisplacementAreas($displacementAreas)
+    {
+        $this->displacementAreas = $displacementAreas;
+
+        return $this;
+    }
+
+    /**
+     * Get displacementAreas
+     *
+     * @return string
+     */
+    public function getDisplacementAreas()
+    {
+        return $this->displacementAreas;
+    }
+
+    /**
+     * Set diploma
+     *
+     * @param string $diploma
+     *
+     * @return CoachInfo
+     */
+    public function setDiploma($diploma)
+    {
+        $this->diploma = $diploma;
+
+        return $this;
+    }
+
+    /**
+     * Get diploma
+     *
+     * @return string
+     */
+    public function getDiploma()
+    {
+        return $this->diploma;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return CoachInfo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set kbis
+     *
+     * @param string $kbis
+     *
+     * @return CoachInfo
+     */
+    public function setKbis($kbis)
+    {
+        $this->kbis = $kbis;
+
+        return $this;
+    }
+
+    /**
+     * Get kbis
+     *
+     * @return string
+     */
+    public function getKbis()
+    {
+        return $this->kbis;
+    }
+
+    /**
+     * Set businessCard
+     *
+     * @param string $businessCard
+     *
+     * @return CoachInfo
+     */
+    public function setBusinessCard($businessCard)
+    {
+        $this->businessCard = $businessCard;
+
+        return $this;
+    }
+
+    /**
+     * Get businessCard
+     *
+     * @return string
+     */
+    public function getBusinessCard()
+    {
+        return $this->businessCard;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return CoachInfo
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set rib
+     *
+     * @param string $rib
+     *
+     * @return CoachInfo
+     */
+    public function setRib($rib)
+    {
+        $this->rib = $rib;
+
+        return $this;
+    }
+
+    /**
+     * Get rib
+     *
+     * @return string
+     */
+    public function getRib()
+    {
+        return $this->rib;
+    }
+
+    /**
+     * Set moyReviews
+     *
+     * @param float $moyReviews
+     *
+     * @return CoachInfo
+     */
+    public function setMoyReviews($moyReviews)
+    {
+        $this->moyReviews = $moyReviews;
+
+        return $this;
+    }
+
+    /**
+     * Get moyReviews
+     *
+     * @return float
+     */
+    public function getMoyReviews()
+    {
+        return $this->moyReviews;
+    }
+
+    /**
+     * Set createDat
+     *
+     * @param \DateTime $createDat
+     *
+     * @return CoachInfo
+     */
+    public function setCreateDat($createDat)
+    {
+        $this->createDat = $createDat;
+
+        return $this;
+    }
+
+    /**
+     * Get createDat
+     *
+     * @return \DateTime
+     */
+    public function getCreateDat()
+    {
+        return $this->createDat;
+    }
+
+    /**
+     * Set idAd
+     *
+     * @param \CommunBundle\Entity\ListAd $idAd
+     *
+     * @return CoachInfo
+     */
+    public function setIdAd(\CommunBundle\Entity\ListAd $idAd = null)
+    {
+        $this->idAd = $idAd;
+
+        return $this;
+    }
+
+    /**
+     * Get idAd
+     *
+     * @return \CommunBundle\Entity\ListAd
+     */
+    public function getIdAd()
+    {
+        return $this->idAd;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \UserBundle\Entity\User $idUser
+     *
+     * @return CoachInfo
+     */
+    public function setIdUser(\UserBundle\Entity\User $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * Set idPackage
+     *
+     * @param \CommunBundle\Entity\ListPackage $idPackage
+     *
+     * @return CoachInfo
+     */
+    public function setIdPackage(\CommunBundle\Entity\ListPackage $idPackage = null)
+    {
+        $this->idPackage = $idPackage;
+
+        return $this;
+    }
+
+    /**
+     * Get idPackage
+     *
+     * @return \CommunBundle\Entity\ListPackage
+     */
+    public function getIdPackage()
+    {
+        return $this->idPackage;
+    }
+
+    /**
+     * Set idAdress
+     *
+     * @param \CommunBundle\Entity\Adress $idAdress
+     *
+     * @return CoachInfo
+     */
+    public function setIdAdress(\CommunBundle\Entity\Adress $idAdress = null)
+    {
+        $this->idAdress = $idAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get idAdress
+     *
+     * @return \CommunBundle\Entity\Adress
+     */
+    public function getIdAdress()
+    {
+        return $this->idAdress;
+    }
+
+    /**
+     * Add coachCourse
+     *
+     * @param \CoachBundle\Entity\CoachCourse $coachCourse
+     *
+     * @return CoachInfo
+     */
+    public function addCoachCourse(\CoachBundle\Entity\CoachCourse $coachCourse)
+    {
+        $this->coachCourse[] = $coachCourse;
+
+        return $this;
+    }
+
+    /**
+     * Remove coachCourse
+     *
+     * @param \CoachBundle\Entity\CoachCourse $coachCourse
+     */
+    public function removeCoachCourse(\CoachBundle\Entity\CoachCourse $coachCourse)
+    {
+        $this->coachCourse->removeElement($coachCourse);
+    }
+
+    /**
+     * Get coachCourse
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCoachCourse()
+    {
+        return $this->coachCourse;
+    }
+}

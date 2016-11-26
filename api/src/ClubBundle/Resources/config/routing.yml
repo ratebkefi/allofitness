@@ -1,0 +1,3 @@
+api_club:
+    resource: "@ClubBundle/Resources/config/routing/club.yml"
+    prefix: /

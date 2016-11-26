@@ -1,0 +1,280 @@
+<!-- Header -->
+<div ng-include="'views/layout/header.html'"></div>
+
+<!-- Carousel -->
+<div ng-include="'views/components/coachSlider.html'"></div>
+<!-- /carousel -->
+
+<div class="section md-padding animated fadeInRight">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12">
+
+                <ol id="breadcrumb_new"  class="breadcrumbs" >
+                    <li itemprop="itemListElement" >
+                        <a itemprop="item" class="home" href="#">
+                            <span itemprop="name">Accueil</span>
+                        </a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                    ›
+                    <li itemprop="itemListElement" ><a
+                            href="#" itemprop="item"><span
+                            itemprop="name">Nos coachs</span></a>
+                        <meta itemprop="position" content="2">
+                    </li>
+                </ol>
+                <!-- /Breadcrumb -->
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div id="left_column" class="column col-xs-12 col-sm-3">
+
+                <input value="" id="datetime_full" type="hidden">
+
+                <!-- Block layered navigation module -->
+                <div id="layered_block_left" class="block">
+                    <div style="" class="block_content">
+                        <form action="#" id="layered_form">
+                            <div>
+                                <div class="layered_filter">
+                                    <md-input-container class=" md-block">
+                                        <label><b>Je souhaite un cours</b></label>
+                                        <md-select aria-label="Réseau de club *" ng-model="item.networkclubs" name="networkclubs" >
+                                            <md-option ng-value="1" selected="selected">particulier</md-option>
+                                            <md-option ng-value="2">pour 2 personnes</md-option>
+                                            <md-option ng-value="3">pour 3 personnes</md-option>
+                                            <md-option ng-value="4">pour 4 personnes</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div class="layered_filter">
+                                    <md-input-container class=" md-block">
+                                        <label><b>Jour de la semaine</b></label>
+                                        <md-select aria-label="Réseau de club *" ng-model="item.networkclubs" name="networkclubs" >
+                                            <md-option ng-value="">Aucun filtre</md-option>
+                                            <option id="layered_dayofweek_1" ng-value="20">
+                                                Lundi
+                                            </option>
+                                            <md-option  id="layered_dayofweek_2" ng-value="20">
+                                                Mardi
+                                            </md-option>
+                                            <md-option  id="layered_dayofweek_3" ng-value="20">
+                                                Mercredi
+                                            </md-option>
+                                            <md-option  id="layered_dayofweek_4" ng-value="20">
+                                                Jeudi
+                                            </md-option>
+                                            <md-option id="layered_dayofweek_5" ng-value="20">
+                                                Vendredi
+                                            </md-option>
+                                            <md-option id="layered_dayofweek_6" ng-value="20">
+                                                Samedi
+                                            </md-option>
+                                            <md-option id="layered_dayofweek_7" ng-value="20">
+                                                Dimanche
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div class="layered_filter">
+                                    <md-input-container class=" md-block">
+                                        <label><b>Rayon</b></label>
+                                        <md-select aria-label="Réseau de club *" ng-model="item.networkclubs" name="networkclubs" >
+                                            <md-option ng-value="">Aucun filtre</md-option>
+                                            <md-option  id="layered_rayon_1" ng-value="20">
+                                                2km
+                                            </md-option>
+                                            <md-option  id="layered_rayon_2" ng-value="20">
+                                                5km
+                                            </md-option>
+                                            <md-option id="layered_rayon_3" ng-value="20">
+                                                10km
+                                            </md-option>
+                                            <md-option id="layered_rayon_4" ng-value="20">
+                                                20km
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div class="layered_filter">
+                                    <div class="layered_subtitle_heading">
+                                    <span class="layered_subtitle">
+                                            Diplômé d'état ?
+                                    </span>
+                                    </div>
+                                    <ul id="ul_layered_id_feature_14" class="col-lg-12 layered_filter_ul">
+                                        <li class="nomargin hiddable col-lg-6">
+
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb1" class="md-primary">
+                                                Diplômé
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb2" class="md-primary">
+                                                En formation
+                                            </md-checkbox>
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                                <div class="layered_filter">
+                                    <div class="layered_subtitle_heading">
+                                    <span class="layered_subtitle">
+                                            Le cours a lieu :
+                                    </span>
+                                    </div>
+                                    <ul id="ul_layered_id_feature_17" class="col-lg-12 layered_filter_ul">
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb11" class="md-primary">
+                                                domicile
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb12" class="md-primary">
+                                                Chez le Coach
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb13" class="md-primary">
+                                                un lieu à définir avec le Coach
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb124" class="md-primary">
+                                                En extérieur
+                                            </md-checkbox>
+                                        </li>
+
+
+                                    </ul>
+
+
+                                </div>
+                                <div class="layered_filter">
+                                    <div class="layered_subtitle_heading">
+                                    <span class="layered_subtitle">
+                                            Objectif principal du cours
+                                    </span>
+                                    </div>
+                                    <ul id="ul_layered_id_feature_18" class="col-lg-12 layered_filter_ul">
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb125" class="md-primary">
+                                                Découverte/Initiation
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb126" class="md-primary">
+                                                Maintien de la forme
+                                            </md-checkbox>
+                                        </li>
+                                        <li class="nomargin hiddable col-lg-6">
+                                            <md-checkbox md-no-ink aria-label="Diplômé" ng-model="data.cb126" class="md-primary">
+                                                Performances
+                                            </md-checkbox>
+                                        </li>
+
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                            <input name="id_category_layered" value="45" type="hidden">
+                        </form>
+                    </div>
+                    <div id="layered_ajax_loader" style="display: none;">
+                        <p>
+                            <img src="https://trainme.co/img/loader.gif" alt="">
+                        </p>
+                    </div>
+                </div>
+                <!-- /Block layered navigation module -->
+
+
+                <div class="hidden-xs">
+                    <p>
+                        <i class="fa fa-info-circle"></i>
+                        Le prix est fixé par les coachs.
+                    </p>
+                    <p> Il est souvent justifié par leur diplôme et leur expérience.</p>
+                </div>
+
+
+            </div>
+
+            <div class="column col-xs-12 col-sm-9">
+                <!-- Products list -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="product_list grid ">
+
+
+                            <li  ng-repeat="item in list_coach"
+                                 class="nopadding col-xs-12 col-sm-6 col-md-4">
+                                <div class="product-container a-js"
+                                     data-href="#">
+                                    <div class="nopadding left-block col-xs-4 col-sm-12">
+                                        <div class="product-image-container">
+                                            <img class="replace-2x img-responsive img-circle"
+                                                 src="media/coach/thumbs/{{item.photo}}"
+                                                 alt="{{item.first_name}}"
+                                                 title="{{item.first_name}}" height="250" width="250">
+                                        </div>
+                                    </div>
+
+                                    <div class="right-block col-xs-8 col-sm-12">
+                                        <p class="product-name">{{item.first_name}} </p>
+                                        <div class="content_price">
+                                            <span class="price product-price"> 25.00€ </span>
+                                            <p class="per-person"></p>
+                                            <meta content="EUR">
+                                            <div class="comments_note">
+                                                <div star-rating rating-value="item.moy_reviews" max="5" ></div>
+                                            </div>
+
+                                            <div class="product-desc">
+                                                Coach de self defense, krava maga, sports de combat diplômé depuis 10 ans
+                                            </div>
+                                        </div>
+                                        <div style="" class="button-container">
+                                            <a class="lnk_view"href="#" title="Afficher">
+                                                <span>Plus de Détail</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><!-- .product-container> -->
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="list_coach.length>0">
+                    <div class="col-xs-12 text-center">
+                        <ul class="pagination">
+                            <li><a ng-if="(pageno>2)" ng-click="pagination(1)"  class="">‹‹</a></li>
+                            <li><a ng-if="(pageno>1)" ng-click="pagination(pageno-1)"  >‹</a></li>
+                            <li><a ng-if="(pageno-1)>1" ng-click="pagination(pageno-1)"  >{{pageno-1}}</a></li>
+                            <li class="active"><a  >{{pageno}}</a></li>
+                            <li><a ng-if="(pageno+1)<=(nbPage)" ng-click="pagination(pageno+1)" >{{pageno+1}}</a></li>
+                            <li><a ng-if="(pageno<(nbPage-1))" ng-click="pagination(pageno+2)" >›</a></li>
+                            <li><a ng-if="(pageno<=(nbPage -1) )" ng-click="pagination(nbPage)"  >››</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>

@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: allofitness
+    database_user: root
+    database_password: 
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    token_mail: !#mj
+    website_email: wejdene@laureacademy.com
+    secret: ThisTokenIsNotSoSecretChangeIt
+    website_url: http://www.allofitness.fr
+    website_titre: Allofitness
+    email_admin: wejdene@laureacademy.com
+    sujet_inscript: Confirmation d'inscription

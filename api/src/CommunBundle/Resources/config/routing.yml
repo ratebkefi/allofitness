@@ -1,0 +1,3 @@
+api_commun:
+    resource: "@CommunBundle/Resources/config/routing/commun.yml"
+    prefix: /

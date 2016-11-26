@@ -1,0 +1,7 @@
+services:
+    member.manager:
+        class: MemberBundle\Manager\MemberManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @user.manager
+          - @service_container

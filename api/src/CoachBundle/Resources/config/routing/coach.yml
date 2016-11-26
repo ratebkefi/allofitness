@@ -1,0 +1,127 @@
+list_coach:
+    pattern:  /
+    defaults: { _controller: CoachBundle:ApiCoach:listCoach, _format: json }
+    requirements:
+        _method: GET
+
+show_coach:
+    pattern:  /show/{id}
+    defaults: { _controller: CoachBundle:ApiCoach:showCoach, _format: json }
+    requirements:
+        _method: GET
+
+delete_coach:
+    pattern:  /delete/{id}
+    defaults: { _controller: CoachBundle:ApiCoach:deleteCoach, _format: json }
+    requirements:
+        _method: DELETE
+
+add_coach:
+    pattern:  /add
+    defaults: { _controller: CoachBundle:ApiCoach:addCoach, _format: json }
+    requirements:
+        _method: POST
+
+update_coach:
+    pattern:  /update/
+    defaults: {  _controller: CoachBundle:ApiCoach:updateCoach, _format: json }
+    requirements:
+        _method: PUT
+
+filtre_coach:
+    pattern:  /filter/
+    defaults: { _controller: CoachBundle:ApiCoach:filterCoach, _format: json }
+    requirements:
+        _method: POST
+
+total_coach:
+    pattern:  /total/
+    defaults: { _controller: CoachBundle:ApiCoach:totalCoach, _format: json }
+    requirements:
+        _method: POST
+
+status_coach:
+    pattern:  /status/
+    defaults: { _controller: CoachBundle:ApiCoach:statusCoach, _format: json }
+    requirements:
+        _method: PUT
+
+list_coach_events:
+    path:  /list_events
+    defaults: { _controller: CoachBundle:ApiCoach:listEvents, _format: json }
+    requirements:
+        _method: POST
+
+add_coach_event:
+    path:  /add_event
+    defaults: { _controller: CoachBundle:ApiCoach:addEvent, _format: json }
+    requirements:
+        _method: POST
+
+update_coach_event:
+    path:  /update_event
+    defaults: { _controller: CoachBundle:ApiCoach:updateEvent, _format: json }
+    requirements:
+        _method: POST
+
+show_coach_event:
+    path:  /show_event
+    defaults: { _controller: CoachBundle:ApiCoach:showEvent, _format: json }
+    requirements:
+        _method: POST
+
+delete_coach_event:
+    path:  /delete_event
+    defaults: { _controller: CoachBundle:ApiCoach:deleteEvent, _format: json }
+    requirements:
+        _method: DELETE
+
+add_course:
+    pattern:  /addcourse
+    defaults: { _controller: CoachBundle:ApiCoachCourse:addCourse, _format: json }
+    requirements:
+        _method: POST
+
+update_course:
+    pattern:  /updatecourse/
+    defaults: {  _controller: CoachBundle:ApiCoachCourse:updateCourse, _format: json }
+    requirements:
+        _method: PUT
+
+show_course_coach:
+    pattern:  /show-courses-coach/
+    defaults: { _controller: CoachBundle:ApiCoachCourse:showCourseCoach, _format: json }
+    requirements:
+        _method: POST
+
+total_course_coach:
+    pattern:  /total-course/
+    defaults: { _controller: CoachBundle:ApiCoachCourse:totalCourseCoach, _format: json }
+    requirements:
+        _method: POST
+
+show_all_course_coach:
+    pattern:  /show-all-courses/
+    defaults: { _controller: CoachBundle:ApiCoachCourse:showCourse, _format: json }
+    requirements:
+        _method: POST
+
+total_all_course_coach:
+    pattern:  /total-all/
+    defaults: { _controller: CoachBundle:ApiCoachCourse:totalCourse, _format: json }
+    requirements:
+        _method: POST
+
+update_status_course:
+    pattern:  /statuscourse/
+    defaults: {  _controller: CoachBundle:ApiCoachCourse:validateCourse, _format: json }
+    requirements:
+        _method: PUT
+
+filtre_coach_course:
+    pattern:  /filter-course-coach/
+    defaults: { _controller: CoachBundle:ApiCoachCourse:filterCourseCoach, _format: json }
+    requirements:
+        _method: POST
+
+

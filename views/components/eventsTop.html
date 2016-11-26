@@ -1,0 +1,48 @@
+<div class="big-title text-center animated fadeInDown delay-01">
+    <h1>ÉVÈNEMENTS DU MOIS</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <slick  settings="slickConfig" responsive="miniGalleryResponsive" infinite=true slides-to-show=3 slides-to-scroll=3>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>0" class="hoverable" src="{{itemEventsTop[0].image}}" alt="desktop">
+                    <p class="light">{{itemEventsTop[0].name}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>1" class="hoverable" src="{{itemEventsTop[1].image}}" alt="desktop">
+                    <p class="light"> {{itemEventsTop[1].name}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>2" class="hoverable" src="{{itemEventsTop[2].image}}" alt="desktop">
+                    <p class="light"> {{itemEventsTop[2].name}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>3" class="hoverable" src="{{itemEventsTop[3].image}}" alt="desktop">
+                    <p class="light"> {{itemEventsTop[3].name}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>4" class="hoverable" src="{{itemEventsTop[4].image}}" alt="desktop">
+                    <p class="light"> {{itemEventsTop[4].name}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemEventsTop.length>5" class="hoverable" src="{{itemEventsTop[5].image}}" alt="desktop">
+                    <p class="light"> {{itemEventsTop[5].name}}</p>
+                </div>
+            </div>
+
+        </slick>
+    </div>
+</div>
+

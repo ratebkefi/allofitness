@@ -1,0 +1,332 @@
+<div class="padding-out">
+    <div class="p-h-md p-v bg-white box-shadow pos-rlt">
+
+        <h3 class="no-margin">Ajouter un Club </h3><br>
+        <p class="m-b">
+            <button class="btn btn-rounded btn-default"  ui-sref="club.list">List Club</button>
+        </p>
+
+    </div>
+    <div class="box">
+        <div class="col-md-12 b-l bg-white bg-auto">
+            <form name="form" class=" p-md col-md-12 form-validation"  ng-submit="add_club(address,confirm_password)" novalidate>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-sm-3 m-b">
+                                <div class="form-group">
+                                    <label >Civilité<sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.civility"
+                                               name="civilitys"
+                                               theme="bootstrap"
+                                               required >
+                                        <ui-select-match placeholder="Civilité">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCivility">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.civilitys.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 m-b">
+                                <div class="form-group">
+                                    <label >Nom <sup class="red-text">*</sup></label>
+                                    <input type="text" ng-model="items.club_name" name="club_name" class="form-control" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.club_name.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Nom du réseau <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.club_network"
+                                               name="networkclubs"
+                                               theme="bootstrap" required >
+                                        <ui-select-match placeholder="Nom du réseau">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemNetworkClub">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.networkclubs.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Type de club <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.club_type" theme="bootstrap"
+                                               name="typeclubs"
+                                               required >
+                                        <ui-select-match placeholder="Type de club...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemTypeClub">
+                                            <div ng-bind-html="item.name"></div>
+                                            <small>
+                                                <span ng-bind-html="item.description">grgdfg</span>
+                                            </small>
+                                        </ui-select-choices>
+
+                                        <p ng-if="submitted" class="errorform selectform"
+                                           ng-show="form.description.$error.required">Ce champs est obligatoire !</p>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Adresse</label>
+                                    <input type="text" name="adresse"  ng-model="items.adresse" class="form-control">
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.adresse.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Adresse suite </label>
+                                    <input type="text" ng-model="items.adresse_contunied"
+                                           name="adresse_contunied"
+                                           class="form-control" >
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Pays <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.country" theme="bootstrap"
+                                               name="countrys"
+                                               ng-change="updateRegion(items.country.id)"
+                                               required >
+                                        <ui-select-match placeholder="Pays...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCountry">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.countrys.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Région <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.region" theme="bootstrap"
+                                               name="regions"
+                                               ng-change="updateDepartement(items.region.id)"
+                                               required >
+                                        <ui-select-match placeholder="Région...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemRegion">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.regions.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Département <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.dep" theme="bootstrap"
+                                               ng-change="updateCity(items.dep.id)"
+                                               name="deps"
+                                               required >
+                                        <ui-select-match placeholder="Département...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemDep">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.regions.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Ville </label>
+                                    <ui-select ng-model="items.city" theme="bootstrap"
+                                               name="citys"
+                                               required >
+                                        <ui-select-match placeholder="Ville...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCity">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.citys.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Code Postal <sup class="red-text">*</sup></label>
+                                    <input type="number" class="form-control" placeholder="00000" name="cps" ng-model="items.cp" maxlength="5" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.cps.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Téléphone 1 <sup class="red-text">*</sup></sup><em class="text-muted">(allow 'a-zA-Z0-9', 10 length)</em></label>
+                                    <input type="number" class="form-control" placeholder="00 00 00 00 00" name="phone" ng-model="items.phone" ng-minlength="10" ng-maxlength="10" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.phone.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Téléphone 2 </sup><em class="text-muted">(allow 'a-zA-Z0-9', 10 length)</em></label>
+                                    <input type="number" class="form-control" placeholder="00 00 00 00 00" ng-model="items.cellphone" ng-minlength="10" ng-maxlength="10" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Url de site <sup class="red-text">*</sup></label>
+                                    <input type="url" class="form-control"  ng-model="items.url_site" name="url_site" placeholder="http://"  required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.url_site.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label>Prénom responsable  <sup class="red-text">*</sup></label>
+                                    <input type="text" class="form-control"  ng-model="items.first_name_responsible" name="first_name_responsible"  required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.first_name_responsible.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Nom responsable<sup class="red-text">*</sup></label>
+                                    <input type="text" class="form-control"  ng-model="items.last_name_responsible"  name="last_name_responsible" required >
+                                    <p ng-if="true" class="errorform selectform"
+                                       ng-show="form.last_name_responsible.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+
+                                    <div class="form-group">
+                                        <label >Fonction Responsable<sup class="red-text">*</sup></label>
+                                        <ui-select ng-model="items.responsible_function"
+                                                   name="responsible_function"
+                                                   theme="bootstrap"
+                                                   required >
+                                            <ui-select-match placeholder="Fonction Responsable">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices repeat="item in itemFunctionClub">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <p ng-if="submitted" class="errorform selectform"
+                                           ng-show="form.responsible_function.$error.required">Ce champs est obligatoire !</p>
+                                    </div>
+                                </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label>Enter password <em class="text-muted">(allow 'a-zA-Z0-9', 4-8 length)</em></label>
+                                    <input type="password" class="form-control" name="passwords" ng-model="items.password"
+                                           ng-pattern="/^[a-zA-Z0-9]{4,8}$/"  required >
+                                    <span ng-show='form.passwords.$error.validator'>Password obligatoir !</span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label>Confirm password</label>
+                                    <input type="password" class="form-control" name="confirm_password"  ng-model="confirm_password" ui-validate=" '$value==items.password' " ui-validate-watch=" 'items.password' " required >
+                                    <span ng-show='form.confirm_password.$error.validator'>Password non compatible!</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Email  <sup class="red-text">*</sup></label>
+                                    <input type="email" class="form-control" name="email" ng-model="items.email"  required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.email.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Superficie<sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.superficie" theme="bootstrap"  name="superficies" required >
+                                        <ui-select-match placeholder="Superficie...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemSuperficie">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.superficies.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Email de la personne contactée  <sup class="red-text">*</sup></label>
+                                    <input type="email" class="form-control"  ng-model="items.email_of_the_person_contacted" name="email_of_the_person_contacted" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.email_of_the_person_contacted.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Email de la personne contactée en cc  </label>
+                                    <input type="email" class="form-control"  ng-model="items.email_of_the_person_contacted_cc" name="email_of_the_person_contacted_cc"  required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.email_of_the_person_contacted_cc.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div flash-message="5000"></div>
+                        <footer class="panel-footer text-right">
+                            <button type="submit" class="btn btn-info"  >Ajouter</button>
+                        </footer>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

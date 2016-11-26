@@ -1,0 +1,114 @@
+list_country:
+    pattern:  /listcountry
+    defaults: { _controller: CommunBundle:ApiCommun:listCountry, _format: json }
+    requirements:
+        _method: GET
+
+
+list_area:
+    pattern:  /listarea
+    defaults: { _controller: CommunBundle:ApiCommun:listArea, _format: json }
+    requirements:
+        _method: GET
+
+list_civility:
+    pattern:  /listcivility
+    defaults: { _controller: CommunBundle:ApiCommun:listCivility, _format: json }
+    requirements:
+        _method: GET
+
+show_region:
+    pattern:  /showregion/{id}
+    defaults: { _controller: CommunBundle:ApiCommun:showRegion, _format: json }
+    requirements:
+        _method: GET
+
+show_ad:
+    pattern:  /show-ad/{id}
+    defaults: { _controller: CommunBundle:ApiCommun:showAd, _format: json }
+    requirements:
+        _method: GET
+
+show_departement:
+    pattern:  /showdepartement/{id}
+    defaults: { _controller: CommunBundle:ApiCommun:showDepartement, _format: json }
+    requirements:
+        _method: GET
+
+show_city:
+    pattern:  /showcity/{id}
+    defaults: { _controller: CommunBundle:ApiCommun:showCity, _format: json }
+    requirements:
+        _method: GET
+
+show_club_type:
+    pattern:  /showtypeclub
+    defaults: { _controller: CommunBundle:ApiCommun:showTypeClub, _format: json }
+    requirements:
+        _method: GET
+
+show_club_network:
+    pattern:  /shownetworkclub
+    defaults: { _controller: CommunBundle:ApiCommun:showNetworkClub, _format: json }
+    requirements:
+        _method: GET
+
+show_club_function:
+    pattern:  /showfunctionclub
+    defaults: { _controller: CommunBundle:ApiCommun:showFunctionClub, _format: json }
+    requirements:
+        _method: GET
+
+add_customer_reviews:
+    pattern:  /customer-reviews/add
+    defaults: { _controller: CommunBundle:ApiCommun:addCustomerReviews, _format: json }
+    requirements:
+        _method: POST
+
+activate_customer_reviews:
+    pattern:  /customer-reviews/activate
+    defaults: { _controller: CommunBundle:ApiCommun:activateCustomerReviews, _format: json }
+    requirements:
+        _method: POST
+
+list_customer_reviews:
+    pattern:  /customer-reviews/list
+    defaults: { _controller: CommunBundle:ApiCommun:listCustomerReviews, _format: json }
+    requirements:
+        _method: POST
+
+show_last_club:
+    pattern:  /lastsubslub
+    defaults: { _controller: CommunBundle:ApiCommun:lastSubsClub, _format: json }
+    requirements:
+        _method: GET
+
+show_last_ad:
+    pattern:  /lastad
+    defaults: { _controller: CommunBundle:ApiCommun:lastAd, _format: json }
+    requirements:
+        _method: GET
+
+show_last_coach:
+    pattern:  /lastsubscoach
+    defaults: { _controller: CommunBundle:ApiCommun:lastSubsCoach, _format: json }
+    requirements:
+        _method: GET
+
+list_events_coach_and_club:
+    pattern:  /listevents/{number}/{month}
+    defaults: { _controller: CommunBundle:ApiCommun:listEvents, _format: json }
+    requirements:
+        _method: GET
+
+list_top_rated_coach_and_club:
+    pattern:  /top_rated/{number}
+    defaults: { _controller: CommunBundle:ApiCommun:listTopRatedClubCoach, _format: json }
+    requirements:
+        _method: GET
+
+status_ad:
+    pattern:  /status-ad/
+    defaults: { _controller: CommunBundle:ApiCommun:statusAd, _format: json }
+    requirements:
+        _method: PUT

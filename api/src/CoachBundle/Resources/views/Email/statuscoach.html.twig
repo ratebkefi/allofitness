@@ -1,0 +1,28 @@
+{% include 'CommunBundle:Email:header.html.twig' %}
+
+<strong>Bonjour {{ civility }} {{ name }},</strong><br/><br/>
+Bienvenue sur la nouvelle plateforme du fitness français <a href="{{ website_url }}">allofitness.fr.</a> <br/>
+
+{% if status %}
+    Nous avons le plaisir de vous informer que l'administrateur a décidé de vous activer : <br/>
+    Votre login : {{username}} <br/>
+
+    Votre mot de passe : {{ password }}<br/><br/>
+
+{% else %}
+    Nous vous infirmons que l'administrateur a décidé de vous déactiver : <br/>
+{% endif %}
+
+Conseils de sécurité importants :<br/>
+
+* Vos informations de compte doivent rester confidentielles.<br/>
+
+* Ne les communiquez jamais à qui que ce soit.<br/>
+
+* Changez votre mot de passe régulièrement.<br/>
+
+* Si vous pensez que quelqu'un utilise votre compte illégalement,veuillez nous prévenir immédiatement.<br/>
+<br/><br/>
+<strong>A très bientôt sur <a href="{{ website_url }}">allofitness.fr</a></strong>
+
+{% include 'CommunBundle:Email:footer.html.twig' %}

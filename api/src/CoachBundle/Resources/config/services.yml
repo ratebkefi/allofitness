@@ -1,0 +1,11 @@
+services:
+    coach.manager:
+        class: CoachBundle\Manager\CoachManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.encoder_factory
+          - @security.context
+          - @mailer
+          - @templating
+          - %website_email%
+          - @service_container

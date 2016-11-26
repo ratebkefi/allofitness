@@ -1,0 +1,297 @@
+<!-- Header -->
+<div ng-include="'views/layout/header.html'"></div>
+
+<!-- Carousel -->
+<div ng-include="'views/components/clubSlider.html'"></div>
+<!-- /carousel -->
+
+<div class="section animated fadeInRight">
+    <div class="container">
+        <h1 class="classic-title"><span>Inscription Membre</span></h1>
+
+        <form name="form" ng-submit="add_member(item)" ng-class="{'not_submitted' : !form.$submitted }"
+              class="form-horizontal " novalidate>
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="md-input-container md-block">
+                        <md-radio-group ng-model="item.civility" name="civilitys" required="required" title="Civilité ">
+                            <md-radio-button ng-repeat="it in itemCivility" class="md-primary" ng-value="it.id"
+                                             aria-label="{{ it.name }}">
+                                {{ it.name }}
+                            </md-radio-button>
+                        </md-radio-group>
+
+                        <p ng-if="submitted" class="errorform selectform"
+                           ng-show="form.civilitys.$error.required">
+                            Ce champ est obligatoire !</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-4">
+                    <md-input-container class=" md-block">
+                        <label>Nom *</label>
+                        <input type="text" ng-model="item.lastname"
+                               name="lastname" class="validate" required>
+                        <p ng-if="submitted" class="errorform"
+                           ng-show="form.lastname.$error.required">Ce
+                            champ est obligatoire !</p>
+                    </md-input-container>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <md-input-container class=" md-block">
+                        <label>Prénom *</label>
+                        <input type="text" ng-model="item.firstname"
+                               name="firstname" class="validate" required>
+
+                        <p ng-if="submitted" class="errorform"
+                           ng-show="form.firstname.$error.required">Ce
+                            champ est obligatoire !</p>
+                    </md-input-container>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Email *</label>
+                        <input type="email" ng-model="item.email" name="email" class="validate" required>
+                        <p ng-if="submitted" class="errorform"
+                           ng-show="form.email.$invalid || form.email.$error.required">
+                            Veuillez saisir une adresse email valide !
+                        </p>
+                    </md-input-container>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Si vous êtes parrainé, entrer l'email de votre parrain</label>
+                        <input type="email" ng-model="item.emailsponsor"
+                               name="emailsponsor">
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Password *</label>
+                        <input type="password" ng-model="item.password" ng-minlength="8"
+                               ng-maxlength="20" name="password" class="validate" required>
+
+                        <p ng-if="submitted" class="errorform" ng-show="form.password.$error.required"
+                           id="password">Ce champ est obligatoire !</p>
+                        <p ng-show="form.password.$error.minlength || form.password.$error.maxlength"
+                           class="errorform">Les mots de passe doivent être entre 8 et 20 caractères!</p>
+                        <p ng-show="" class="errorform">Les mots de passe doivent être entre 8 et 20
+                            caractères!</p>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <md-input-container
+                            ng-class="form.confirmPassword.$error.required || form.confirmPassword.$error.noMatch ? 'erreur' : 'sucess'"
+                            class=" md-block">
+                        <label>Confirmer mot de passe *</label>
+                        <input type="password" ng-model="item.confirm_password" name="confirmPassword"
+                               class="validate"
+                               id="confirmPassword" valid-password required>
+
+                        <p class="errorform"
+                           ng-show="form.confirmPassword.$error.noMatch">
+                            Les mots de passe ne correspondent pas.</p>
+
+                        <p ng-if="submitted" ng-show="form.confirmPassword.$error.required"
+                           class="errorform">Ce champ est obligatoire !</p>
+
+                    </md-input-container>
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <div class="md-input-container md-block mt-sm">
+
+                        <datepicker date-refocus="true" date-format="yyyy-MM-dd"
+                                    date-min-limit="{{items.minDtate}}"
+                                    date-max-limit="{{items.maxDtate}}"
+                                    ng-click="items.maxDtate=maxDtateI;items.minDtate=minDtateI;"
+                                    id="birthdate"
+                                    class="datemember" name="birthdate">
+                            <input class="birthdate" ng-model="items.birthdate"  date-disabled-dates = "{[{datesDisabled}]}"
+                                   name="birthdate"
+                                   id="birthdate" placeholder="Date de Naissance"
+                                   required="required"
+                                   ng-pattern='/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/'
+                                   />
+                        </datepicker>
+
+                        <p ng-if="submitted" class="errorform dateform" ng-show='form.birthdate.$invalid'>
+                            Veuillez saisir une date valide au format aaaa-mm-dd
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row clearfix">
+
+                <div class="col-md-6 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Adresse *</label>
+                        <input type="text" g-places-autocomplete ng-model="item.adress" name="adress"
+                               required="required"/>
+                        <p ng-if="submitted" class="errorform" ng-show="form.adress.$error.required">Ce
+                            champ est obligatoire !</p>
+                    </md-input-container>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Adresse suite</label>
+                        <input type="text" name="adresse_contunied" ng-model="item.adresse_contunied"/>
+
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="md-input-container md-block">
+                        <ui-select theme="select2" ng-model="item.countrys"
+                                   name="countrys"
+                                   ng-change="item.country=item.countrys.id;updateRegion(item.countrys)"
+                                   required="required" title="Pays">
+                            <ui-select-match placeholder="Pays *">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in itemCountry | filter: $select.search">
+                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p ng-if="submitted" class="errorform selectform" ng-show="form.countrys.$error.required">
+                            Ce champ est obligatoire !</p>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="md-input-container md-block">
+
+                        <ui-select theme="select2" ng-model="item.regions"
+                                   name="regions"
+                                   ng-change="item.region=item.regions.id;updateDepartement(item.regions)"
+                                   required="required" title="Région">
+                            <ui-select-match placeholder="Région *">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in itemRegion | filter: $select.search">
+                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <p ng-if="submitted" class="errorform selectform" ng-show="form.regions.$error.required">Ce
+                            champ est obligatoire !</p>
+
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="md-input-container md-block">
+                        <ui-select theme="select2" ng-model="item.deps"
+                                   name="deps" ng-change="item.departement=item.deps.id;updateCity(item.deps)"
+                                   required="required" title="Pays">
+                            <ui-select-match placeholder="Département *">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in itemDep | filter: $select.search">
+                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <p ng-if="submitted" class="errorform selectform" ng-show="form.deps.$error.required">Ce
+                            champ est obligatoire !</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="md-input-container md-block">
+
+                        <ui-select theme="select2" ng-model="item.citys"
+                                   name="citys" ng-change="item.city=item.citys.id"
+                                   title="Ville">
+                            <ui-select-match placeholder="Ville">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="item in itemCity | filter: $select.search">
+                                <div ng-bind-html="item.name | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Code Postal *</label>
+                        <input type="number" ng-model="item.cps" ng-minlength="5"
+                               ng-maxlength="5" name="cps" class="validate" required>
+
+                        <p ng-if="submitted" class="errorform" ng-show="form.cps.$error.required">Ce
+                            champ est obligatoire !</p>
+                        <p ng-show="form.cps.$error.minlength || form.cps.$error.maxlength"
+                           class="errorform">Le code postal doit comporter 5 chiffres !</p>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Téléphone *</label>
+                        <input type="number" ng-model="item.mobilephone" ng-minlength="10"
+                               ng-maxlength="10" name="mobilephone" class="validate" required>
+
+                        <p ng-if="submitted" class="errorform" ng-show="form.mobilephone.$error.required">Ce
+                            champ est obligatoire !</p>
+                        <p ng-show="form.mobilephone.$error.minlength || form.mobilephone.$error.maxlength"
+                           class="errorform">Le numero de téléphone doit comporter 10 chiffres !</p>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <md-input-container class=" md-block">
+                        <label>Téléphone 2 </label>
+                        <input type="number" ng-model="item.cellphone"
+                               name="cellphone" class="validate">
+
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <md-checkbox ng-model="item.registerednewsletter" aria-label="s'inscrire à la newsletter">
+                        s'inscrire à la newsletter
+                    </md-checkbox>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <md-input-container class=" md-block">
+                        <md-button id="submit_form" type="submit" ng-disabled="dis"
+                                   class="waves-effect waves-light md-raised md-primary pull-right">
+                            <ng-md-icon icon="save" class="md-icon-left" size="16"></ng-md-icon>
+                            <span>S'inscrire</span>
+                        </md-button>
+                    </md-input-container>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>
+
+<script>
+    document.createElement('ui-select');
+    document.createElement('ui-select-match');
+    document.createElement('ui-select-choices');
+</script>

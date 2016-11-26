@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h5 class="no-margin m-b">Mon Profil</h5>
+    <ul class="list-group md-whiteframe-z0">
+      <li class="list-group-item">
+        <div class="block font-bold">Username</div>
+        {{ userData.username }}
+      </li>
+
+      <li class="list-group-item">
+          <span class="block font-bold">Email</span>
+          {{ userData.email}}
+      </li>
+      <li class="list-group-item">
+
+          <span class="block font-bold">Date de Création</span>
+          <td>{{userData.create_time | date:'dd/MM/yyyy à HH:mm'}}</td>
+
+      </li>
+
+
+
+
+
+    </ul>
+  </div>
+</div>

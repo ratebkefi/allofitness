@@ -1,0 +1,45 @@
+
+parameters:
+    status:
+        waiting: 0
+        activate: 1
+        removed: 6
+        deactivate: 7
+        waiting_for_payment: 11
+        waiting_personalization: 12
+    
+    response:
+            103: "Champ obligatoire:"
+            200: "L'opération  traitée avec succès."
+            201: "La création  traitée avec succès."
+            202: "Demande traitée mais sans garantie de résultat."
+            203: "Activation du compte avec succé."
+            204: "Demande traitée avec succès mais pas d’information à renvoyer."
+            205: "Compte déja activé."
+            206: "Compte qui n'existe pas."
+            304: "La modification n'est pas effectuer."
+            400: "La syntaxe de la requête est erronée"
+            401: "Une authentification est nécessaire pour accéder à la ressource"
+            402: "Paiement requis pour accéder à la ressource"
+    
+    str_length:
+        introduction_presentation_max: 420
+        developpe_presentation_max: 1200
+        conclusion_presentation_max: 420
+        mot_responsable_club_max: 200
+    
+    course_schedule : 
+        dir_upload: '%kernel.root_dir%/../web/uploads/clubbundle/courseschedule'
+        accepted_exts: [pdf, doc, docx, xls, xlsx]
+    
+    photo_event:
+        dir_upload: '%kernel.root_dir%/../web/uploads/clubbundle/photoevent'
+        accepted_exts: [jpg]
+    
+    days_of_week: [lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche]
+    
+    access: [metro, rer, tramway, bus, borne_velo, parking, acces_routier_a_proximite, autres]
+        
+            
+            
+    

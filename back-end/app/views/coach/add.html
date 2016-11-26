@@ -1,0 +1,544 @@
+<div class="padding-out">
+    <div class="p-h-md p-v bg-white box-shadow pos-rlt">
+
+        <h3 class="no-margin">Ajouter un Coach ii</h3><br>
+        <p class="m-b">
+            <button class="btn btn-rounded btn-default"  ui-sref="coach.list">List Coach</button>
+        </p>
+
+    </div>
+    <div class="box">
+        <style type="text/css">
+            .testClass > input {
+
+                border-color: #cfd1d4;
+                border-radius: 0;
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                margin-top: -20px;
+
+            }
+        </style>
+
+        <div class="col-md-12 b-l bg-white bg-auto">
+            <form name="form" class=" p-md col-md-12 form-validation" ng-submit="add_coach(address)" novalidate>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+
+
+                            <div class="col-sm-4 m-b">
+                                <div class="form-group">
+                                    <label >Civilité<sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.civility"
+                                               name="civilitys"
+                                               theme="bootstrap"
+                                               required >
+                                        <ui-select-match placeholder="Civilité">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCivility">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.civilitys.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-sm-4 m-b">
+                                <div class="form-group">
+                                    <label >Nom <sup class="red-text">*</sup></label>
+                                    <input type="text" ng-model="items.first_name" name="first_name" class="form-control" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.first_name.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 m-b">
+                                <div class="form-group">
+                                    <label >Prénom <sup class="red-text">*</sup></label>
+                                    <input type="text" ng-model="items.last_name" name="last_name" class="form-control" required >
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.last_name.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label>Enter password <em class="text-muted">(allow 'a-zA-Z0-9', 4-8 length)</em></label>
+                                    <input type="password" class="form-control" name="password" ng-model="items.password"
+                                           ng-pattern="/^[a-zA-Z0-9]{4,8}$/"  required >
+                                    <span  ng-if="submitted" ng-show='form.confirm_password.$error.validator'>Password obligatoir !</span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label>Confirm password</label>
+                                    <input type="password" class="form-control" name="confirm_password" required ng-model="confirm_password" ui-validate=" '$value==items.password' " ui-validate-watch=" 'items.password' ">
+                                    <span  ng-if="submitted" ng-show='form.confirm_password.$error.validator'>Password non compatible!</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Email  <sup class="red-text">*</sup></label>
+                                    <input type="email" class="form-control"  ng-model="items.email"  name="email" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.email.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Adresse</label>
+                                    <input type="text" name="adresse"  ng-model="items.adresse" class="form-control">
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.adresse.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Adresse continue</label>
+                                    <input type="text" name="adresse_contunied"  ng-model="items.adresse_contunied" class="form-control">
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Téléphone <sup class="red-text">*</sup></label>
+                                    <input type="number" class="form-control" placeholder="00 00 00 00 00" name="phone" ng-model="items.phone" ng-minlength="10" ng-maxlength="10" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.phone.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Pays <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.country" theme="bootstrap"
+                                               ng-change="updateRegion(items.country.id)"
+                                               name="countrys"
+                                               required >
+                                        <ui-select-match placeholder="Pays...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCountry">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.countrys.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Région <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.region" theme="bootstrap"
+                                               ng-change="updateDepartement(items.region.id)"
+                                               name="regions"
+                                               required >
+                                        <ui-select-match placeholder="Région...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemRegion">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.regions.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Département <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.dep" theme="bootstrap"
+                                               ng-change="updateCity(items.dep.id)"
+                                               name="deps"
+                                               required >
+                                        <ui-select-match placeholder="Département...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemDep">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.deps.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group"  >
+                                    <label >Ville <sup class="red-text">*</sup></label>
+                                    <ui-select ng-model="items.city" theme="bootstrap"
+                                               name="citys"
+                                                >
+                                        <ui-select-match placeholder="Ville...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCity">
+                                            <div ng-bind-html="item.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-6 m-b">
+                                <div class="form-group">
+                                    <label >Code Postal <sup class="red-text">*</sup></label>
+                                    <input type="number" class="form-control" placeholder="00000" name="cps" ng-model="items.cp" ng-minlength="5" ng-maxlength="5" required >
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.cps.$error.required">Ce champs est obligatoire !</p>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-b">
+                                            <div class="form-group"  >
+                                                <label >date de naissance <sup class="red-text">*</sup></label>
+
+                                                <input type="text" class="form-control" placeholder="YYYY-MM-DD"  name="birthdate" ng-model="items.birthdate" ng-pattern="/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/" required >
+
+                                                <p ng-if="submitted" class="errorform selectform"
+                                                   ng-show="form.birthdate.$error.required">Ce champs est obligatoire !</p>
+                                </div>
+                            </div>
+                            </div>
+
+
+                        <div class="row card" style=" padding-top: 20px; padding-bottom: 20px">
+                            <div class="input-field col-md-12 col-sm-12">
+                            <div class="form-group" ng-hide="(uploaderd.queue.length>0)">
+
+                                        <label class="col-sm-2 control-label">Diplome  :</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" aria-label="file" nv-file-select=""  uploader="uploaderd"
+                                                   name="uploaderd"
+                                                    />
+                                        </div>
+
+                                    <div class="file-path-wrapper" ng-if="false">
+                                        <input class="file-path validate" type="text" id="uploaderd"
+                                              >
+                                    </div>
+                            </div>
+                                <table class="col-sm-12">
+                                    <tr ng-repeat="item0 in uploaderd.queue">
+                                        <td><strong>{{ item0.file.name=generate1+'.'+filename(item0.file.name)
+                                            }}</strong>
+                                        </td>
+
+                                        <td ng-show="uploaderd.isHTML5" nowrap>{{
+                                            item0.file.size/1024/1024|number:2 }} MB
+
+                                        </td>
+                                        <td ng-show="uploaderd.isHTML5" width="100" >
+                                                  <progressbar animate="false" value="item0.progress" type="success" style="margin-top: 17px; margin-right:10px;"><b>{{item0.progress}}%</b></progressbar>
+                                        </td>
+                                        <td class="text-center">
+                                                    <span ng-show="item0.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item0.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item0.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item0.upload();items.diploma=item0.file.name;items.succ0=true"
+                                                    ng-disabled="item0.isReady || item0.isUploading || item0.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    ng-click="item0.cancel()" ng-disabled="!item0.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item0.remove();items.succ0=false">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row card" style=" padding-top: 20px; padding-bottom: 20px">
+                            <div class="input-field col-md-12 col-sm-12">
+                                <div class="form-group" ng-hide="(uploaderp.queue.length>0)">
+
+                                    <label class="col-sm-2 control-label">Photo * :</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" aria-label="file" nv-file-select="" uploader="uploaderp"
+                                               name="uploaderp"
+                                               required />
+                                    </div>
+
+
+                                    <div class="file-path-wrapper" ng-if="false">
+                                        <input class="file-path validate" type="text" id="uploaderp"
+                                               >
+                                    </div>
+                                </div>
+                                <table class="col-sm-12">
+                                    <tr ng-repeat="item1 in uploaderp.queue">
+                                        <td><strong>{{ item1.file.name=generate1+'.'+filename(item1.file.name)
+                                            }}</strong></td>
+                                        <td ng-show="uploaderp.isHTML5" nowrap>{{
+                                            item1.file.size/1024/1024|number:2 }} MB
+                                        </td>
+                                        <td ng-show="uploaderp.isHTML5" width="100" >
+                                            <progressbar animate="false" value="item1.progress" type="success" style="margin-top: 17px; margin-right:10px;"><b>{{item1.progress}}%</b></progressbar>
+                                        </td>
+                                        <td class="text-center">
+                                                    <span ng-show="item1.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item1.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item1.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item1.upload();items.photo=item1.file.name;items.succ1=true"
+                                                    ng-disabled="item1.isReady || item1.isUploading || item1.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    ng-click="item1.cancel()" ng-disabled="!item1.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item1.remove();items.succ1=false">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="input-field col-md-12 col-sm-12">
+                                <p ng-if="submitted" class="errorform" ng-show="!items.succ1">Ce fichier est obligatoire !</p>
+                            </div>
+                        </div>
+
+                        <div class="row card" style=" padding-top: 20px; padding-bottom: 20px">
+                            <div class="input-field col-md-12 col-sm-12">
+                                <div class="form-group" ng-hide="(uploaderk.queue.length>0)">
+
+                                    <label class="col-sm-2 control-label">Kbis  :</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" aria-label="file" nv-file-select=""  uploader="uploaderk"
+                                               name="uploaderk"
+                                               required />
+                                    </div>
+
+
+                                    <div class="file-path-wrapper" ng-if="false">
+                                        <input class="file-path validate" type="text" id="uploaderk"
+                                              >
+                                    </div>
+                                </div>
+                                <table class="col-sm-12">
+                                    <tr ng-repeat="item2 in uploaderk.queue">
+                                        <td><strong >{{ item2.file.name=generate1+'.'+filename(item2.file.name)
+                                            }}</strong></td>
+                                        <td ng-show="uploaderk.isHTML5" nowrap>{{
+                                            item2.file.size/1024/1024|number:2 }} MB
+                                        </td>
+                                        <td ng-show="uploaderk.isHTML5" width="100" >
+                                            <progressbar animate="false" value="item2.progress" type="success" style="margin-top: 17px; margin-right:10px;"><b>{{item2.progress}}%</b></progressbar>
+                                        </td>
+                                        <td class="text-center">
+                                                    <span ng-show="item2.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item2.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item2.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item2.upload();items.kbis=item2.file.name;items.succ2=true"
+                                                    ng-disabled="item2.isReady || item2.isUploading || item2.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    ng-click="item2.cancel()" ng-disabled="!item2.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item2.remove();items.succ2=false">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="row card" style=" padding-top: 20px; padding-bottom: 20px">
+                            <div class="input-field col-md-12 col-sm-12">
+                                <div class="form-group" ng-hide="(uploaderc.queue.length>0)">
+
+                                    <label class="col-sm-2 control-label">Carte professionelle d'éducateur sportif  :</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" aria-label="file" nv-file-select=""  uploader="uploaderc"
+                                               name="uploaderd"
+                                               required />
+                                    </div>
+
+
+                                    <div class="file-path-wrapper" ng-if="false">
+                                        <input class="file-path validate" type="text" id="uploaderc"
+                                              >
+                                    </div>
+                                </div>
+                                <table class="col-sm-12">
+                                    <tr ng-repeat="item3 in uploaderc.queue">
+                                        <td><strong id="">{{ item3.file.name=generate1+'.'+filename(item3.file.name)
+                                            }}</strong></td>
+                                        <td ng-show="uploaderc.isHTML5" nowrap>{{
+                                            item3.file.size/1024/1024|number:2 }} MB
+                                        </td>
+                                        <td ng-show="uploaderc.isHTML5" width="100" >
+                                            <progressbar animate="false" value="item3.progress" type="success" style="margin-top: 17px; margin-right:10px;"><b>{{item3.progress}}%</b></progressbar>
+                                        </td>
+                                        <td class="text-center">
+                                                    <span ng-show="item3.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item3.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item3.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item3.upload();items.business_card=item3.file.name;items.succ3=true"
+                                                    ng-disabled="item3.isReady || item3.isUploading || item3.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    ng-click="item3.cancel()" ng-disabled="!item3.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item3.remove();items.succ3=false">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="row card" style=" padding-top: 20px; padding-bottom: 20px">
+                            <div class="input-field col-md-12 col-sm-12">
+                                <div class="form-group" ng-hide="(uploaderr.queue.length>0)">
+
+                                    <label class="col-sm-2 control-label">Rib  :</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" aria-label="file" nv-file-select=""  uploader="uploaderr"
+                                               name="uploaderr"
+                                               required />
+                                    </div>
+
+
+                                    <div class="file-path-wrapper" ng-if="false">
+                                        <input class="file-path validate" type="text" id="uploaderr"
+                                               >
+                                    </div>
+                                </div>
+                                <table class="col-sm-12">
+                                    <tr ng-repeat="item4 in uploaderr.queue">
+                                        <td><strong>{{ item4.file.name=generate1+'.'+filename(item4.file.name)
+                                            }}</strong></td>
+                                        <td ng-show="uploaderr.isHTML5" nowrap>{{
+                                            item4.file.size/1024/1024|number:2 }} MB
+                                        </td>
+                                        <td ng-show="uploaderr.isHTML5" width="100" >
+                                            <progressbar animate="false" value="item4.progress" type="success" style="margin-top: 17px; margin-right:10px;"><b>{{item4.progress}}%</b></progressbar>
+                                        </td>
+                                        <td class="text-center">
+                                                    <span ng-show="item4.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item4.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item4.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-success btn-xs"
+                                                    ng-click="item4.upload();items.rib=item4.file.name;items.succ4=true"
+                                                    ng-disabled="item4.isReady || item4.isUploading || item4.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning btn-xs"
+                                                    ng-click="item4.cancel()" ng-disabled="!item4.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs"
+                                                    ng-click="item4.remove();items.succ4=false">
+                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div flash-message="5000"></div>
+
+
+
+                        <footer class="panel-footer text-right">
+                            <button type="submit"  class="btn btn-info"  >Ajouter</button>
+
+                        </footer>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

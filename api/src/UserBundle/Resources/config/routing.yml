@@ -1,0 +1,55 @@
+
+api_user_login:
+    pattern:  /login/
+    defaults: { _controller: UserBundle:ApiUser:login, _format: json }
+    requirements:
+        _method: POST
+
+api_user_logout:
+    pattern:  /logout/
+    defaults: { _controller: UserBundle:ApiUser:logout, _format: json }
+    requirements:
+        _method: GET
+
+api_user_status:
+    pattern:  /status/
+    defaults: { _controller: UserBundle:ApiUser:loginStatus, _format: json }
+    requirements:
+        _method: GET
+
+api_user_password_forgot:
+    pattern:  /password/forgot/
+    defaults: { _controller: UserBundle:ApiUser:passwordForgot, _format: json }
+    requirements:
+        _method: GET
+
+api_user_post:
+    pattern:  /register/
+    defaults: { _controller: UserBundle:ApiUser:register, _format: json }
+    requirements:
+        _method: POST
+
+api_user_put:
+    pattern:  /editinformation/
+    defaults: { _controller: UserBundle:ApiUser:edit, _format: json }
+    requirements:
+        _method: PUT
+
+api_user_get:
+    pattern:  /information/
+    defaults: { _controller: UserBundle:ApiUser:information, _format: json }
+    requirements:
+        _method: GET
+
+api_user_status:
+    pattern:  /status/
+    defaults: { _controller: UserBundle:ApiUser:loginStatus, _format: json }
+    requirements:
+        _method: GET
+
+active_user:
+    pattern:  /{token}/activate/
+    defaults: { _controller: UserBundle:ApiUser:activeUser, _format: json }
+    requirements:
+        _method: PUT
+

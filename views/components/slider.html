@@ -1,0 +1,88 @@
+<div id="carousel-example" class="carousel carousel-fade" data-ride="carousel">
+    <div class="slider">
+        <ul class="">
+            <li ng-repeat="slide in slides">
+                <img class="slide slide-animation nonDraggableImage"
+                     ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+                     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+
+            </li>
+        </ul>
+
+        <div class="type-wrap caption-slider">
+            <h1 class="main-title">Je
+                <typer words="['cherche,', 'teste gratuitement', ' /..']" type-time='150' backspace-time='200'
+                       start-delay='1500' ></typer>
+            </h1>
+        </div>
+
+
+        <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+        <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+        <nav class="nav">
+            <div class="wrapper">
+                <ul class="dots">
+                    <li class="dot caption-slider" ng-repeat="slide in slides">
+                        <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                           ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="search">
+        <form name="form" ng-submit="search_club(item)" ng-class="{'not_submitted' : !form.$submitted }"
+              class="form-horizontal " novalidate>
+                <div class="cc-selector">
+                    <div class="custom-radio">
+                        <input id="visa" type="radio" name="club_name" ng-model="item.club_name" value="visa" />
+                    <label class="drinkcard-cc visa" for="visa">un club</label>
+                    </div>
+                    <div class="custom-radio">
+                        <input id="mastercard" type="radio" name="club_name" ng-model="item.club_name" value="mastercard" />
+                    <label class="drinkcard-cc mastercard"for="mastercard">un coach</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        <!--<div class="check">-->
+                            <!--<div class="custom-radio">-->
+                                <!--<label for="toggle-1">un club</label>-->
+                                <!--<input type="checkbox" id="toggle-1">-->
+                            <!--</div>-->
+                            <!--<div class="custom-radio">-->
+                                <!--<label for="toggle-2">un coach</label>-->
+                                <!--<input type="checkbox" id="toggle-2">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                            <md-input-container class="md-block">
+                                <label>Activité , énergie ville</label>
+                                <md-select aria-label=" Activité , énergie ville" name="countrys" ng-model="items.countrys" >
+                                    <md-option>
+                                        Activité , énergie ville
+                                    </md-option>
+                                </md-select>
+
+                            </md-input-container>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <md-input-container class="md-block">
+                            <label>Activité , énergie ville</label>
+                            <md-select aria-label=" Activité , énergie ville" name="countrys" ng-model="items.countrys" >
+                                <md-option>
+                                    Activité , énergie ville
+                                </md-option>
+                            </md-select>
+
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                            <button type="submit" class="fast-search" name="button"><i
+                                    class="fa fa-search "></i></button>
+                    </div>
+                </div>
+            </form>
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+{% include 'CommunBundle:Email:header.html.twig' %}
+
+<strong>Bonjour, {{ civility }} {{ name }},</strong><br/><br/>
+Bienvenue sur la nouvelle plateforme du fitness français <a href="{{ website_url }}">allofitness.fr.</a> <br/>
+Nous avons le plaisir de vous confirmer la création de votre compte Coach avec les identifiants suivants:<br/>
+Votre login : {{username}} <br/>
+
+Votre mot de passe : {{ password }}<br/><br/>
+
+Pour confirmer votre inscription veuillez cliquer sur le lien si dessous :<br/>
+
+<a href="{{ website_url }}/{{ url_activate }}" target="_blank">{{ website_url }}/{{ url_activate }}</a>.<br><br/>
+
+Conseils de sécurité importants :<br/>
+
+* Vos informations de compte doivent rester confidentielles.<br/>
+
+* Ne les communiquez jamais à qui que ce soit.<br/>
+
+* Changez votre mot de passe régulièrement.<br/>
+
+* Si vous pensez que quelqu'un utilise votre compte illégalement,veuillez nous prévenir immédiatement.<br/>
+<br/><br/>
+<strong>A très bientôt sur <a href="{{ website_url }}">allofitness.fr</a></strong>
+
+{% include 'CommunBundle:Email:footer.html.twig' %}

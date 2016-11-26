@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Server Side Pagination in Angular js</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Liste des Coach
+        </div>
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <button type="button" ui-sref="coach.add" class="btn btn-sm btn-success" >
+                <i class="glyphicon glyphicon-plus" > </i> Ajouter un Coach
+            </button>
+        </div>
+        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped" ng-controller="CoachCtrl as data">
+            <thead>
+            <tr>
+                <th colspan="5">
+                    <div class="input-group col-sm-5">
+                        <input type="text" ng-model="search_filter" class="form-control" placeholder="Rechercher ...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="pagination(1,search_filter)" ng-disabled="search_filter == null">Go!</button>
+                      </span>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th st-sort="firstName">Nom et Prénom</th>
+                <th st-sort="lastName" class="hidden-xs" >Package</th>
+                <th st-sort="birthDate" class="hidden-xs">Tel</th>
+                <th st-sort="balance" class="hidden-xs">Adresse Email</th>
+                <th st-sort="balance" class="hidden-xs">État</th>
+                <th st-sort="balance" class="hidden-xs" >Actions </th>
+
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr ng-show="data.coachs.length <= 0"><td colspan="7" style="text-align:center;"> Chargement de nouvelles données !!</td></tr>
+            <tr dir-paginate="coach in data.coachs|itemsPerPage:data.itemsPerPage" total-items="data.total_count">
+                <td>{{coach.first_name}}</td>
+                <td class="hidden-xs">{{coach.id_package.name}}</td>
+                <td class="hidden-xs">{{coach.phone}}</td>
+                <td class="hidden-xs">{{coach.id_user.email}}</td>
+                <td>
+                    <span ng-if="coach.status==1" class="label bg-success" title="Active">Activé </span>
+                    <span ng-if="coach.status==0" class="label bg-warning" title="Suspended">Désactivé  </span>
+                </td>
+                <td>
+                    <button type="button" popover="Editer" popover-trigger="mouseenter" ui-sref="coach.update({id: coach.id})" class="btn btn-xs btn-default">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </button>
+                    <button ng-if="coach.status==0" type="button" popover="Activer" popover-trigger="mouseenter"  ng-click="updateStatus(coach.id,1)"  class="btn btn-xs btn-default">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </button>
+
+                    <button ng-if="coach.status==1" type="button" popover="Désactiver" popover-trigger="mouseenter" ng-click="updateStatus(coach.id,0)" class="btn btn-xs btn-default">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                    </button>
+                </td>
+
+            </tr>
+            </tbody>
+
+            <tfoot class="hide-if-no-paging">
+            <tr>
+                <td colspan="5" class="text-center">
+                    <ul class="pagination">
+                        <li><a ng-if="(pageno>2)" ng-click="pagination(1)"  class="">‹‹</a></li>
+                        <li><a ng-if="(pageno>1)" ng-click="pagination(pageno-1)"  >‹</a></li>
+                        <li><a ng-if="(pageno-1)>1" ng-click="pagination(pageno-1)"  >{{pageno-1}}</a></li>
+                        <li class="active"><a  >{{pageno}}</a></li>
+                        <li><a ng-if="(pageno+1)<=(nbPage)" ng-click="pagination(pageno+1)" >{{pageno+1}}</a></li>
+                        <li><a ng-if="(pageno<= (nbPage-1))" ng-click="pagination(pageno+2)" >›</a></li>
+                        <li><a ng-if="(pageno<=(nbPage -1) )" ng-click="pagination(nbPage)"  >››</a></li>
+                    </ul>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</body>
+</html>

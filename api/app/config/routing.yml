@@ -1,0 +1,25 @@
+coach:
+    resource: "@CoachBundle/Resources/config/routing.yml"
+    prefix:   /api/coach
+
+club:
+    resource: "@ClubBundle/Resources/config/routing.yml"
+    prefix:   /api/club
+
+member:
+    resource: "@MemberBundle/Resources/config/routing.yml"
+    prefix:   /api/member
+    
+commun:
+    resource: "@CommunBundle/Resources/config/routing.yml"
+    prefix:   /api/commun
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /api/user
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+

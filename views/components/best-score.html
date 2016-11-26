@@ -1,0 +1,61 @@
+
+<md-tabs class="custom-tab" md-dynamic-height flex>
+    <md-tab label="Les clubs les mieux notés" flex>
+        <md-content flex>
+            <ul class="posts-list">
+
+                <li ng-repeat="item in clubTopRated" >
+                    <div class="post-wrapper">
+                        <div class="post-thumbnail">
+                            <a href="#">
+                                <img src="images/emerald-114-150x150.jpg" class="post-image">
+                            </a>
+                        </div>
+                        <div class="post-title-wrapper">
+                            <a href="#" class="post-title">{{item.name}}</a>
+                            <div class="star">
+                                <div star-rating rating-value="item.note" max="5" ></div>
+                            </div>
+                            <div class="content-wrapper">
+                                <span>{{item.date}}</span><br/>
+                                <p>{{item.desc}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </md-content>
+    </md-tab>
+    <md-tab label="Les coachs les mieux notés" flex>
+        <md-content class="md-padding">
+            <ul class="posts-list">
+
+                <li ng-repeat="item in coachTopRated" >
+                    <div class="post-wrapper">
+                        <div class="post-thumbnail">
+                            <a href="#">
+                                <img src="images/emerald-114-150x150.jpg" class="post-image">
+                            </a>
+                        </div>
+                        <div class="post-title-wrapper">
+                            <a href="#" class="post-title">{{item.name}}</a>
+                            <div class="star">
+                                <div star-rating rating-value="item.note" max="5" ></div>
+                            </div>
+                            <div class="content-wrapper">
+                                <span>{{item.date}}</span><br/>
+                                <p>{{item.desc}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </md-content>
+    </md-tab>
+</md-tabs>

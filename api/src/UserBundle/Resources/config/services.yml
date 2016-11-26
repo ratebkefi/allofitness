@@ -1,0 +1,18 @@
+services:
+    user.manager:
+        class: UserBundle\Manager\UserManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.encoder_factory
+          - @security.context
+          - @mailer
+          - @templating
+          - %website_email%
+          - @service_container
+
+    admin_user_persistence_listener:
+        class: UserBundle\EventListener\UserPersistenceListener
+        arguments:
+            - @security.encoder_factory
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

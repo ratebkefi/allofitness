@@ -1,0 +1,19 @@
+<div class="box">
+  <!-- Content Navbar -->
+  <div class="navbar md-whiteframe-z1 no-radius" ng-class="$state.current.data.theme ? $state.current.data.theme.primary : app.setting.theme.primary">
+    <!-- Open side - Naviation on mobile -->
+    <a md-ink-ripple ng-click="openAside()" ng-hide="$state.current.data.child" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+    <!-- / -->
+
+    <!-- / -->
+     <!-- / -->
+  </div>
+  <!-- Content -->
+  <div class="box-row">
+    <div class="box-cell">
+      <div class="box-inner padding" ui-view id="view">
+      </div>
+    </div>
+  </div>
+  <!-- / -->
+</div>

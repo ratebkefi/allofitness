@@ -1,0 +1,16 @@
+{% include 'CommunBundle:Email:header.html.twig' %}
+
+<strong>Bonjour {{ civility }} {{ name }},</strong><br/><br/>
+
+Votre inscription n'a pas été acceptée par l'administrateur du site <a href="{{ website_url }}">allofitness.fr.</a> <br/>
+
+Pour l'une des raisons suivantes : <br/>
+<ul> 
+<li>Votre compte est resté inactif pendant plus d’une année.</li>
+<li>Vos informations saisies ne sont pas valides.</li>
+<li>Votre compte ne respecte pas les Conditions Générales d’Utilisation.</li>
+</ul>
+Pour tout renseignement complémentaire, veuillez contacter l'administrateur à l'adresse suivante : {{email_admin}}<br/><br/>
+<strong>A très bientôt sur <a href="{{ website_url }}">allofitness.fr</a></strong>
+
+{% include 'CommunBundle:Email:footer.html.twig' %}

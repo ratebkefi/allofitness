@@ -1,0 +1,11 @@
+{% include 'CommunBundle:Email:header.html.twig' %}
+
+<strong>Bonjour {{ civility }} {{ name }},</strong><br/><br/>
+
+Votre inscription a été acceptée par l'administrateur du site <a href="{{ website_url }}">allofitness.fr.</a> <br/><br/>
+
+Pour tout renseignement complémentaire, veuillez contacter l'administrateur à l'adresse suivante : {{email_admin}}<br/><br/>
+
+<strong>A très bientôt sur <a href="{{ website_url }}">allofitness.fr</a></strong>
+	
+{% include 'CommunBundle:Email:footer.html.twig' %}

@@ -1,0 +1,209 @@
+<!-- Header -->
+<div ng-include="'views/layout/header.html'"></div>
+
+<div id="main-content">
+    <!-- Start Home Page Slider -->
+    <section id="home">
+        <!-- Carousel -->
+        <div ng-include="'views/components/slider.html'"></div>
+        <!-- /carousel -->
+    </section>
+    <!-- End Home Page Slider -->
+
+
+    <!-- Start Services Section -->
+    <div class="section service">
+        <div class="container">
+            <div class="row">
+
+                <!-- Start Service Icon 1 -->
+                <div class="col-md-3 col-sm-6 service-box service-center animated fadeIn delay-01">
+                    <div class="service-icon">
+                        <i class="fa fa-map-marker icon-large" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>High Quality Theme</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat Lorem
+                            pariatur</p>
+
+                    </div>
+                </div>
+                <!-- End Service Icon 1 -->
+
+                <!-- Start Service Icon 2 -->
+                <div class="col-md-3 col-sm-6 service-box service-center animated fadeIn delay-02 "
+                     data-animation="fadeIn" data-animation-delay="02">
+                    <div class="service-icon">
+                        <i class="fa fa-eur icon-large" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Full Responsive</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat Lorem
+                            pariatur</p>
+                    </div>
+                </div>
+                <!-- End Service Icon 2 -->
+
+                <!-- Start Service Icon 3 -->
+                <div class="col-md-3 col-sm-6 service-box service-center animated fadeIn delay-03"
+                     data-animation="fadeIn" data-animation-delay="03">
+                    <div class="service-icon">
+                        <i class="fa fa-clock-o icon-large" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Retina Display Ready</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat Lorem
+                            pariatur</p>
+                    </div>
+                </div>
+                <!-- End Service Icon 3 -->
+
+                <!-- Start Service Icon 4 -->
+                <div class="col-md-3 col-sm-6 service-box service-center animated fadeIn delay-04"
+                     data-animation="fadeIn" data-animation-delay="04">
+                    <div class="service-icon">
+                        <i class="fa fa-diamond icon-large" aria-hidden="true"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Clean Modern Code</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat Lorem
+                            pariatur</p>
+                    </div>
+                </div>
+                <!-- End Service Icon 4 -->
+
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- End Services Section -->
+
+    <!-- Start Services Section -->
+    <div class="section service">
+        <!-- Carousel -->
+        <div ng-include="'views/components/addRecent.html'"></div>
+        <!-- /carousel -->
+    </div>
+    <!-- End Services Section -->
+
+
+    <div class="line2">
+        <div class="section visible">
+            <div class="container visible">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <img class="phone" src="images/phone.png"/>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-md">
+                        <h1 class="white-color">Annonces sur ALLO FITNESS</h1>
+                        <p class="white-color">Some things just look better in motion and in the highly competitive world of fashion, finding
+                        an
+                        edge over the competition is crucial. When it comes to clothes, hair,</p>
+
+                        <ul class="items pt-xxlg">
+                            <li class="item" ng-repeat="item in itemAds | filter:{ status:1 } | limitTo: 2"  >
+                                <div class="img">
+                                    <img src="{{item.photo}}"/>
+                                </div>
+                                <div class="description">
+                                    <h3>{{item.title}}</h3>
+                                    <h5>{{item.description}}</h5>
+                                    <a href="#">détail...</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <md-button class="md-raised right blue-accent-2 btn-xlarge sm-text">Voir plus...</md-button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Start Services Section -->
+    <div class="section service mt-lg">
+        <div class="container">
+            <div class="row">
+                <!-- BEST SCORE -->
+                <div ng-include="'views/components/best-score.html'"></div>
+                <!-- /BEST SCORE -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="line2 phone-content mt-lg">
+        <div class="section visible">
+            <div class="container visible ">
+                <div class="row content-phone1">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 box-img" ng-class="{flipped: hover1}" >
+                        <img class="phone1 promo-image"  src="images/coach.jpg"/>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <h1 class="text-right white-color pt-xxlg">Vous êtes coach sportif?</h1>
+                        <md-button  ui-sref="index.addcoach"  ng-mouseenter="hover1 = true" ng-mouseleave="hover1 = false"
+                                   class="md-raised right blue-accent-2 btn-xlg">oui et je veux créer mon profil
+                        </md-button>
+
+                    </div>
+                </div>
+                <div class="row content-phone2 ">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h1 class="left white-color pt-xxlg">Vous êtes responsable d’un club ?</h1>
+                        <md-button  ui-sref="index.addclub"  ng-mouseenter="hover2 = true" ng-mouseleave="hover2 = false"
+                                    class="md-raised left blue-accent-2 btn-xlg">oui et je veux créer mon profil
+                        </md-button>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 box-img" ng-class="{flipped: hover2}">
+                        <img class="phone2 promo-image" src="images/club.jpg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Start Services Section -->
+    <div class="section service mt-lg">
+        <!-- BEST SCORE -->
+        <div ng-include="'views/components/eventsTop.html'"></div>
+        <!-- /BEST SCORE -->
+    </div>
+    <!-- End Services Section -->
+
+
+    <div class="line-catre line2-content bg-carte mt-lg">
+        <div class="section visible">
+            <div class="container">
+                <h1 class="text-center">Bénificiez d'une expérience unique</h1>
+                <h4 class="text-center">pour vous ou pour vos proches</h4>
+
+                <div class="col-md-4" ng-repeat="task in tasks" >
+                    <div class="flip">
+                        <div class="card" ng-class="{flipped: hover}"
+                             ng-mouseenter="hover = true"
+                             ng-mouseleave="hover = false"  >
+                            <div class="face front">
+                                <img src="images/logo_white.png">
+                                <div class="card-text">{{task.price}}</div>
+                            </div>
+                            <div class="face back">
+                                <a class="btn buy-card-btn" href="#">
+                                    <span class="fa fa-angle-right"></span>
+                                    Je profite
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>

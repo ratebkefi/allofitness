@@ -1,0 +1,125 @@
+list_club:
+    pattern:  /
+    defaults: { _controller: ClubBundle:ApiClub:listClub, _format: json }
+    requirements:
+        _method: GET
+
+show_club:
+    pattern:  /show/{id}
+    defaults: { _controller: ClubBundle:ApiClub:showClub, _format: json }
+    requirements:
+        _method: GET
+
+delete_club:
+    pattern:  /delete/{id}
+    defaults: { _controller: ClubBundle:ApiClub:deleteClub, _format: json }
+    requirements:
+        _method: DELETE
+
+add_club:
+    pattern:  /add
+    defaults: { _controller: ClubBundle:ApiClub:addClub, _format: json }
+    requirements:
+        _method: POST
+
+update_club:
+    pattern:  /update/
+    defaults: { _controller: ClubBundle:ApiClub:updateClub, _format: json }
+    requirements:
+        _method: PUT
+
+filtre_club:
+    pattern:  /filter/
+    defaults: { _controller: ClubBundle:ApiClub:filterClub, _format: json }
+    requirements:
+        _method: POST
+
+total_club:
+    pattern:  /total/
+    defaults: { _controller: ClubBundle:ApiClub:totalClub, _format: json }
+    requirements:
+        _method: POST
+
+status_club:
+    pattern:  /status/
+    defaults: { _controller: ClubBundle:ApiClub:statusClub, _format: json }
+    requirements:
+        _method: PUT
+
+espace_club_pro:
+    path:  /activites_equipements_confort_services
+    defaults: { _controller: ClubBundle:ApiClub:activitesAndEquipementsAndConfortAndServices, _format: json }
+    requirements:
+        _method: POST
+
+schedules_and_access:
+    path:  /schedules_access
+    defaults: { _controller: ClubBundle:ApiClub:schedulesAndAccess, _format: json }
+    requirements:
+        _method: POST
+
+presentation:
+    path:  /presentation
+    defaults: { _controller: ClubBundle:ApiClub:presentation, _format: json }
+    requirements:
+        _method: POST
+
+invitation_discovery_pass:
+    path:  /invitation_discovery_pass
+    defaults: { _controller: ClubBundle:ApiClub:invitationAndDiscoveryPass, _format: json }
+    requirements:
+        _method: POST
+
+list_events:
+    path:  /list_events
+    defaults: { _controller: ClubBundle:ApiClub:listEvents, _format: json }
+    requirements:
+        _method: POST
+
+add_event:
+    path:  /add_event
+    defaults: { _controller: ClubBundle:ApiClub:addEvent, _format: json }
+    requirements:
+        _method: POST
+
+update_event:
+    path:  /update_event
+    defaults: { _controller: ClubBundle:ApiClub:updateEvent, _format: json }
+    requirements:
+        _method: POST
+
+show_event:
+    path:  /show_event
+    defaults: { _controller: ClubBundle:ApiClub:showEvent, _format: json }
+    requirements:
+        _method: POST
+
+delete_event:
+    path:  /delete_event
+    defaults: { _controller: ClubBundle:ApiClub:deleteEvent, _format: json }
+    requirements:
+        _method: DELETE
+
+list_tem_club:
+    path:  /list_tem_club
+    defaults: { _controller: ClubBundle:ApiClubTeam:listClubTeam, _format: json }
+    requirements:
+        _method: POST
+
+add_tem_club:
+    path:  /add_tem_club
+    defaults: { _controller: ClubBundle:ApiClubTeam:addClubTeam, _format: json }
+    requirements:
+        _method: POST
+
+update_tem_club:
+    path:  /update_tem_club
+    defaults: { _controller: ClubBundle:ApiClubTeam:updateClubTeam, _format: json }
+    requirements:
+        _method: POST
+
+delete_tem_club:
+    path:  /delete_tem_club
+    defaults: { _controller: ClubBundle:ApiClubTeam:deleteClubTeam, _format: json }
+    requirements:
+        _method: DELETE        

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Server Side Pagination in Angular js</title>
+
+</head>
+<body>
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        Liste des Club
+    </div>
+    <div class="panel-body">
+        <button type="button" ui-sref="club.add" class="btn btn-sm btn-success" >
+            <i class="glyphicon glyphicon-plus" > </i> Ajouter un Club
+        </button>
+    </div>
+    <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped" ng-controller="ClubCtrl as data">
+        <thead>
+        <tr>
+            <th colspan="5">
+                <div class="input-group col-sm-5">
+                    <input type="text" ng-model="search_filter" class="form-control" placeholder="Rechercher ...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="pagination(1,search_filter)" ng-disabled="search_filter == null">Go!</button>
+                      </span>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th st-sort="firstName">Nom du Club</th>
+            <th st-sort="lastName" class="hidden-xs">Responsable </th>
+            <th st-sort="birthDate" class="hidden-xs" >Email P. contactée</th>
+            <th st-sort="balance" class="hidden-xs" >Email P. contactée cc</th>
+            <th st-sort="balance" class="hidden-xs">État</th>
+            <th st-sort="balance" class="hidden-xs" >Actions </th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr ng-show="data.clubs.length <= 0"><td colspan="7" style="text-align:center;"> Chargement de nouvelles données !!</td></tr>
+        <tr dir-paginate="club in data.clubs|itemsPerPage:data.itemsPerPage" total-items="data.total_count">
+            <td>{{club.club_name}}</td>
+            <td class="hidden-xs">{{club.first_name_responsible}} {{club.last_name_responsible}} </td>
+            <td class="hidden-xs">{{club.email_of_the_person_contacted}}</td>
+            <td class="hidden-xs">{{club.email_of_the_person_contacted_cc}}</td>
+            <td>
+                <span ng-if="club.status==1" class="label bg-success" title="Active">Activé</span>
+                <span ng-if="club.status==0" class="label bg-warning" title="Suspended">Désactivé</span>
+            </td>
+            <td>
+                <button type="button" popover="Editer" popover-trigger="mouseenter" ui-sref="club.update({id: club.id})" class="btn btn-xs btn-default">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+                <button ng-if="club.status==0" type="button" popover="Activer " popover-trigger="mouseenter" ng-click="updateStatus(club.id,1)" class="btn btn-xs btn-default">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <button ng-if="club.status==1" type="button" popover="Désactiver" popover-trigger="mouseenter" ng-click="updateStatus(club.id,0)" class="btn btn-xs btn-default">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                </button>
+            </td>
+
+        </tr>
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+        <tr>
+            <td colspan="5" class="text-center">
+                <ul class="pagination">
+                    <li><a ng-if="(pageno>2)" ng-click="pagination(1)"  class="">‹‹</a></li>
+                    <li><a ng-if="(pageno>1)" ng-click="pagination(pageno-1)"  >‹</a></li>
+                    <li><a ng-if="(pageno-1)>1" ng-click="pagination(pageno-1)"  >{{pageno-1}}</a></li>
+                    <li class="active"><a  >{{pageno}}</a></li>
+                    <li><a ng-if="(pageno+1)<=(nbPage)" ng-click="pagination(pageno+1)" >{{pageno+1}}</a></li>
+                    <li><a ng-if="(pageno<= (nbPage-1))" ng-click="pagination(pageno+2)" >›</a></li>
+                    <li><a ng-if="(pageno<=(nbPage -1) )" ng-click="pagination(nbPage)"  >››</a></li>
+                </ul>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+</body>
+</html>

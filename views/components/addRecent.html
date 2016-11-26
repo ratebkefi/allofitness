@@ -1,0 +1,47 @@
+<div class="big-title text-center animated fadeInDown delay-01">
+    <h1>Ajoutés récemment</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <slick  settings="slickConfig" responsive="miniGalleryResponsive" infinite=true slides-to-show=3 slides-to-scroll=3>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>0" class="hoverable" src="{{itemAddRecent[0].image}}" alt="desktop">
+                    <p class="light">{{itemAddRecent[0].title}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>1" class="hoverable" src="{{itemAddRecent[1].image}}" alt="desktop">
+                    <p class="light"> {{itemAddRecent[1].title}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>2" class="hoverable" src="{{itemAddRecent[2].image}}" alt="desktop">
+                    <p class="light"> {{itemAddRecent[2].title}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>3" class="hoverable" src="{{itemAddRecent[3].image}}" alt="desktop">
+                    <p class="light"> {{itemAddRecent[3].title}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>4" class="hoverable" src="{{itemAddRecent[4].image}}" alt="desktop">
+                    <p class="light"> {{itemAddRecent[4].title}}</p>
+                </div>
+            </div>
+            <div class="slickslide">
+                <div class="text-center">
+                    <img ng-if="itemAddRecent.length>5" class="hoverable" src="{{itemAddRecent[5].image}}" alt="desktop">
+                    <p class="light"> {{itemAddRecent[5].title}}</p>
+                </div>
+            </div>
+
+        </slick>
+    </div>
+</div>
+

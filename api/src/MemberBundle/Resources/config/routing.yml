@@ -1,0 +1,41 @@
+list_member:
+    pattern:  /
+    defaults: { _controller: MemberBundle:ApiMember:listMember, _format: json }
+    requirements:
+        _method: GET
+
+show_member:
+    pattern:  /show/{id}
+    defaults: { _controller: MemberBundle:ApiMember:showmember, _format: json }
+    requirements:
+        _method: GET
+
+delete_member:
+    pattern:  /delete/{id}
+    defaults: { _controller: MemberBundle:ApiMember:deletemember, _format: json }
+    requirements:
+        _method: DELETE
+
+add_member:
+    pattern:  /add
+    defaults: { _controller: MemberBundle:ApiMember:addmember, _format: json }
+    requirements:
+        _method: POST
+
+update_member:
+    pattern:  /update/
+    defaults: { _controller: MemberBundle:ApiMember:updatemember, _format: json }
+    requirements:
+        _method: PUT
+
+filtre_member:
+    pattern:  /filter/
+    defaults: { _controller: MemberBundle:ApiMember:filtermember, _format: json }
+    requirements:
+        _method: POST
+
+total_member:
+    pattern:  /total/
+    defaults: { _controller: MemberBundle:ApiMember:totalmember, _format: json }
+    requirements:
+        _method: POST

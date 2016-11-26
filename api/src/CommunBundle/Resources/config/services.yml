@@ -1,0 +1,19 @@
+services:
+    mailing.manager:
+        class: CommunBundle\Manager\MailingManager
+        arguments:
+          - @mailer
+          - @templating
+          - %website_email%
+    customer.reviews.manager:
+        class: CommunBundle\Manager\CustomerReviewsManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.token_storage
+          - @service_container
+    commun.manager:
+        class: CommunBundle\Manager\CommunManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.token_storage
+          - @service_container

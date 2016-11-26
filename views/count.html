@@ -1,0 +1,120 @@
+<div id="main-content" ui-view>
+
+    <script>
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        var timefin=getTimeRemaining(new Date('2016-08-29'));
+
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date(Date.parse(new Date()) + (timefin.total));
+        initializeClock('clockdiv', deadline);
+
+    </script>
+
+    <div class="banner">
+        <div class="banner-info">
+            <a class="logo" ui-sref="index"  >
+                <img alt="" src="images/logo.png">
+            </a>
+
+            <div id="clockdiv">
+                <div>
+                    <span class="days"></span>
+                    <div class="smalltext">Jours</div>
+                </div>
+                <div>
+                    <span class="hours"></span>
+                    <div class="smalltext">Heurs</div>
+                </div>
+                <div>
+                    <span class="minutes"></span>
+                    <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                    <span class="seconds"></span>
+                    <div class="smalltext">Secondes</div>
+                </div>
+            </div>
+
+            <section id="pro" >
+                <div class="top-diagonal"></div>
+                <div class="container padding-top-20 padding-bottom-20">
+                    <div class="col-md-6">
+                        <div class="promo-box">
+                            <img src="images/prop_coach.jpg" class="promo-image">
+                            <div class="promo-content text-center">
+                                <div class="heading">VOUS ÊTES</div>
+                                <div class="large-heading">COACH SPORTIF</div>
+                                <a class="btn promo-btn" href="/allofitness/coach/add"><span class="fa fa-angle-right"></span>Oui et je veux créer mon profil</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="promo-box">
+                            <img src="images/prop_club.jpg" class="promo-image">
+                            <div class="promo-content text-center">
+                                <div class="heading">VOUS ÊTES</div>
+                                <div class="large-heading">RESPONSABLE D'UN CLUB</div>
+                                <a class="btn promo-btn" href="/allofitness/club/add"><span class="fa fa-angle-right"></span>Oui et je veux créer mon profil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-diagonal"></div>
+            </section>
+
+
+            <!--<div class="social-icons">-->
+                <!--<ul class="social-networks square spin-icon">-->
+                    <!--<li><a href="#" class="icon-facebook"></a></li>-->
+                    <!--<li><a href="#" class="icon-twitter"></a></li>-->
+                    <!--<li><a href="#" class="icon-g-plus"></a></li>-->
+                    <!--<li><a href="#" class="icon-dribble"> </a></li>-->
+                    <!--<li><a href="#" class="icon-instagram"> </a></li>-->
+                    <!--<li><a href="#" class="icon-pinterest"> </a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div class="copyright">
+                <p>© Copyright 2016 allofitness - Powered by <a href="http://www.prodexo.net/" target="_blank">Prodexo</a></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>

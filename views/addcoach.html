@@ -1,0 +1,604 @@
+<!-- Header -->
+<div ng-include="'views/layout/header.html'"></div>
+
+<!-- Carousel -->
+<div ng-include="'views/components/coachSlider.html'"></div>
+<!-- /carousel -->
+
+<div class="section ng-init="items.succ0=false;items.succ1=false;items.succ2=false;items.succ3=false;items.succ4=false;">
+    <div class="container animated fadeInRight">
+
+        <h1 class="classic-title"><span>Inscription Coach</span></h1>
+
+        <form name="form" ng-submit="add_coach(items)" ng-class="{'not_submitted' : !form.$submitted }"
+              class="form-horizontal " novalidate>
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6">
+
+                    <fieldset>
+                        <legend>Informations personnel:</legend>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+
+
+                                    <md-radio-group ng-model="items.civility"  name="civilitys" required="required" title="Civilité " >
+                                        <md-radio-button ng-repeat="item in itemCivility" class="md-primary" ng-value="item.id" aria-label="{{ item.name }}">
+                                            {{ item.name  }}
+                                        </md-radio-button>
+                                    </md-radio-group>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.civilitys.$error.required">
+                                        Ce champs est obligatoire !</p>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Nom *</label>
+                                    <input type="text" ng-model="items.last_name" class="validate" name="last_name"
+                                           required>
+                                    <p ng-if="submitted" class="errorform" ng-show="form.last_name.$error.required">
+                                        Ce champs est obligatoire !</p>
+                                </md-input-container>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Prénom *</label>
+                                    <input type="text" ng-model="items.first_name" class="validate" name="first_name"
+                                           required>
+                                    <p ng-if="submitted" class="errorform" ng-show="form.first_name.$error.required">
+                                        Ce champs est obligatoire !</p>
+                                </md-input-container>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+
+                                    <datepicker date-refocus="true" date-format="yyyy-MM-dd"
+                                                date-min-limit="{{items.minDtate}}"
+                                                date-max-limit="{{items.maxDtate}}"
+                                                ng-click="items.maxDtate=maxDtateI;items.minDtate=minDtateI;"
+                                                id="birth_date"
+                                                class="date" name="birth_date" >
+                                        <input class="birthdate" ng-model="items.birth_date"
+                                               name="birthdate"
+                                               id="birthdate" placeholder="Date de Naissance"
+                                               required="required"
+                                               ng-pattern='/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/'
+                                        />
+                                    </datepicker>
+
+                                    <p ng-if="submitted" class="errorform dateform" ng-show='form.birthdate.$invalid'>
+                                        Veuillez saisir une date valide au format aaaa-mm-dd
+                                    </p>
+
+
+                                    <!--<md-datepicker ng-format="yyyy/mm/dd" ng-model="items.birth_date"-->
+                                    <!--md-placeholder="Date de naissance"></md-datepicker>-->
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Email *</label>
+                                    <input type="email" ng-model="items.email" name="email" class="validate" required>
+                                    <p ng-if="submitted" class="errorform" ng-show="form.email.$invalid || form.email.$error.required" >
+                                        Veuillez saisir une adresse email valide !</p>
+                                </md-input-container>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class=" md-block">
+                                    <label>Mot de passe *</label>
+                                    <input type="password" ng-model="items.password" ng-minlength="8"
+                                           ng-maxlength="20" name="password" class="validate" required>
+
+                                    <p ng-if="submitted" class="errorform" ng-show="form.password.$error.required"
+                                       id="password">Ce champ est obligatoire !</p>
+                                    <p ng-show="form.password.$error.minlength || form.password.$error.maxlength"
+                                       class="errorform">Les mots de passe doivent être entre 8 et 20 caractères!</p>
+                                    <p ng-show="" class="errorform">Les mots de passe doivent être entre 8 et 20
+                                        caractères!</p>
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container  ng-class="form.confirmPassword.$error.required || form.confirmPassword.$error.noMatch ? 'erreur' : 'sucess'" class=" md-block">
+                                    <label>Confirmer mot de passe *</label>
+                                    <input type="password" ng-model="items.confirm_password" name="confirmPassword"
+                                           class="validate"
+                                           id="confirmPassword" valid-password required>
+
+                                    <p class="errorform"
+                                       ng-show="form.confirmPassword.$error.noMatch">
+                                        Les mots de passe ne correspondent pas.</p>
+
+                                    <p ng-if="submitted" ng-show="form.confirmPassword.$error.required"
+                                       class="errorform">Ce champ est obligatoire !</p>
+
+                                </md-input-container>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <fieldset>
+                        <legend>Coordonnées:</legend>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Adresse *</label>
+                                    <input type="text" g-places-autocomplete ng-model="items.adress" name="adress"
+                                           required>
+                                    <p ng-if="submitted" class="errorform" ng-show="form.adress.$error.required">Ce
+                                        champ est obligatoire !</p>
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Adresse suite</label>
+                                    <input type="text" ng-model="items.adresse_contunied"/>
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+                                    <ui-select theme="select2" ng-model="items.countrys"
+                                               name="countrys"
+                                               ng-change="items.country=items.countrys.id;updateRegion(items.countrys)"
+                                               required="required" title="Pays">
+                                        <ui-select-match placeholder="Pays *">{{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in itemCountry | filter: $select.search">
+                                            <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <!--<md-select name="countrys"-->
+                                    <!--ng-model="items.countrys"-->
+                                    <!--ng-change="items.country=items.countrys.id;updateRegion(items.countrys)"-->
+                                    <!--required="required">-->
+                                    <!--<md-option ng-repeat="option in itemCountry" ng-value="{{option.id}}">-->
+                                    <!--{{option.name}}-->
+                                    <!--</md-option>-->
+                                    <!--</md-select>-->
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.countrys.$error.required">
+                                        Ce champ est obligatoire !</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+
+                                    <ui-select theme="select2" ng-model="items.regions"
+                                               name="regions"
+                                               ng-change="items.region=items.regions.id;updateDepartement(items.regions)"
+                                               required="required" title="Régions">
+                                        <ui-select-match placeholder="Régions *">{{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in itemRegion | filter: $select.search">
+                                            <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.regions.$error.required">Ce
+                                        champ est obligatoire !</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+                                    <ui-select theme="select2" ng-model="items.deps"
+                                               name="deps"
+                                               ng-change="items.departement=items.deps.id;updateCity(items.deps)"
+                                               required="required" title="Pays">
+                                        <ui-select-match placeholder="Département *">{{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in itemDep | filter: $select.search">
+                                            <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                    <p ng-if="submitted" class="errorform selectform"
+                                       ng-show="form.deps.$error.required">Ce
+                                        champ est obligatoire !</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="md-input-container md-block">
+                                    <ui-select theme="select2" ng-model="items.citys"
+                                               name="citys" ng-change="items.city=items.citys.id"
+                                               title="Ville">
+                                        <ui-select-match placeholder="Ville">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="item in itemCity | filter: $select.search">
+                                            <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class=" md-block">
+                                    <label>Code Postal *</label>
+                                    <input type="number" ng-model="items.cps" ng-minlength="5"
+                                           ng-maxlength="5" name="cps" class="validate" required>
+
+                                    <p ng-if="submitted" class="errorform" ng-show="form.cps.$error.required">Ce
+                                        champ est obligatoire !</p>
+                                    <p ng-show="form.cps.$error.minlength || form.cps.$error.maxlength"
+                                       class="errorform">Le code postal doit comporter 5 chiffres !</p>
+                                </md-input-container>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <md-input-container class="md-block">
+                                    <label>Téléphone *</label>
+                                    <input type="number" ng-model="items.phone" ng-minlength="10"
+                                           ng-maxlength="10" name="phone" class="validate" required>
+
+                                    <p ng-if="submitted" class="errorform" ng-show="form.phone.$error.required">Ce
+                                        champ est obligatoire !</p>
+                                    <p ng-show="form.phone.$error.minlength || form.phone.$error.maxlength"
+                                       class="errorform">Le numero de téléphone doit comporter 10 chiffres !</p>
+                                </md-input-container>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <fieldset>
+                        <legend>Documments:</legend>
+
+                        <div class="row">
+                            <div class="input-field col-md-8 col-sm-12" ng-hide="(uploaderd.queue.length>0)">
+                                <div class="md-block md-input-container">
+                                    <label>Diplôme </label>
+                                    <input type="file" aria-label="file" nv-file-select="" name="uploaderd"
+                                           uploader="uploaderd"
+                                           multiple
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="input-field col-md-12 col-sm-12">
+                                <table class="mt-md">
+                                    <tr ng-repeat="item0 in uploaderd.queue">
+                                        <td width="25%">
+                                            <label>Diplôme&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <!--<strong id="diploma">{{-->
+                                            <!--item0.file.name=generate1+'.'+filename(item0.file.name)-->
+                                            <!--}}</strong>-->
+                                        </td>
+                                        <!--<td width="10%" ng-show="uploaderd.isHTML5" nowrap>{{-->
+                                            <!--item0.file.size/1024/1024|number:2 }} MB-->
+                                        <!--</td>-->
+                                        <td width="10%" ng-show="uploaderd.isHTML5">
+
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item0.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td width="10%" class="text-center">
+                                                    <span ng-show="item0.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item0.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item0.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td width="2%">
+
+                                            <md-button class="md-mini" aria-label="Eat cake" ng-init="item0.file.name=generate1+'.'+filename(item0.file.name);item0.upload();items.diploma=item0.file.name;items.succ0=true"
+                                                    ng-click="item0.remove();items.succ0=false">
+                                                <span class="glyphicon glyphicon-trash red-color"></span>
+                                            </md-button>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col-md-8 col-sm-12" ng-hide="(uploaderp.queue.length>0)">
+                                <div class="md-block md-input-container">
+                                    <label>Photo *</label>
+                                    <input type="file" aria-label="file" nv-file-select="" uploader="uploaderp"
+                                           multiple/>
+                                    <p ng-if="submitted" class="errorform" ng-show="!items.succ1">Ce fichier est
+                                        obligatoire !</p>
+                                </div>
+                            </div>
+
+                            <div class="input-field col-md-12 col-sm-12">
+                                <table class="mt-md">
+                                    <tr ng-repeat="item1 in uploaderp.queue">
+
+                                        <td width="25%">
+                                            <label>Photo *&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <!--<strong>{{item1.file.name=generate2+'.'+filename(item1.file.name)-->
+                                                <!--}} </strong>-->
+                                            <p ng-if="submitted" class="errorform" ng-show="!items.succ1">Ce fichier est
+                                                obligatoire
+                                                !</p>
+
+                                        </td>
+                                        <!--<td width="10%" ng-show="uploaderp.isHTML5" nowrap>{{-->
+                                            <!--item1.file.size/1024/1024|number:2 }} MB-->
+                                        <!--</td>-->
+                                        <td width="10%" ng-show="uploaderp.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item1.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td width="5%" class="text-center">
+                                                    <span ng-show="item1.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item1.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item1.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td width="2%">
+                                            <md-button class="md-mini" aria-label="Eat cake" ng-init="item1.file.name=generate2+'.'+filename(item1.file.name);item1.upload();items.photo=item1.file.name;items.succ1=true"
+                                                    ng-click="item1.remove();items.succ1=false">
+                                                <span class="glyphicon glyphicon-trash red-color"></span>
+                                            </md-button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-field col col-md-8 col-sm-12" ng-hide="(uploaderk.queue.length>0)">
+                                <div class="md-block md-input-container">
+                                    <label>Kbis </label>
+                                    <input type="file" aria-label="file" nv-file-select="" uploader="uploaderk"
+                                           multiple/>
+                                </div>
+                            </div>
+
+                            <div class="input-field col-md-12 col-sm-12">
+                                <table class="mt-md col-md-12 col-sm-12">
+                                    <tr ng-repeat="item2 in uploaderk.queue">
+                                        <td width="25%">
+
+                                            <label>Kbis &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <!--<strong>{{ item2.file.name=generate3+'.'+filename(item2.file.name)-->
+                                                <!--}} </strong>-->
+                                        </td>
+                                        <!--<td width="10%" ng-show="uploaderk.isHTML5" nowrap>{{-->
+                                            <!--item2.file.size/1024/1024|number:2 }} MB-->
+                                        <!--</td>-->
+                                        <td width="10%" ng-show="uploaderk.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item2.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td width="5%" class="text-center">
+                                                    <span ng-show="item2.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item2.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item2.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td width="2%">
+                                            <md-button class="md-mini" aria-label="Eat cake" ng-init="item2.file.name=generate3+'.'+filename(item2.file.name);item2.upload();items.kbis=item2.file.name;items.succ2=true"
+                                                    ng-click="item2.remove();items.succ2=false">
+                                                <span class="glyphicon glyphicon-trash red-color"></span>
+                                            </md-button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-field col-md-8 col-sm-12" ng-hide="(uploaderc.queue.length>0)">
+                                <div class="md-block md-input-container">
+                                    <label>Carte professionelle </label>
+                                    <input type="file" aria-label="file" nv-file-select="" uploader="uploaderc"
+                                           multiple/>
+                                </div>
+                            </div>
+
+                            <div class="input-field col col-md-12 col-sm-12">
+                                <table class="mt-md">
+                                    <tr ng-repeat="item3 in uploaderc.queue">
+                                        <td width="25%">
+
+                                            <label>Carte professionelle&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <!--<strong>{{ item3.file.name=generate4+'.'+filename(item3.file.name)-->
+                                                <!--}}</strong>-->
+                                        </td>
+
+                                        <!--<td width="10%" ng-show="uploaderc.isHTML5" nowrap>{{-->
+                                            <!--item3.file.size/1024/1024|number:2 }} MB-->
+                                        <!--</td>-->
+                                        <td width="10%" ng-show="uploaderc.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item3.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td width="5%" class="text-center">
+                                                    <span ng-show="item3.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item3.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item3.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td width="2%">
+
+                                            <md-button class="md-mini" aria-label="Eat cake" ng-init="item3.file.name=generate4+'.'+filename(item3.file.name);item3.upload();items.business_card=item3.file.name;items.succ3=true"
+                                                    ng-click="item3.remove();items.succ3=false">
+                                                <span class="glyphicon glyphicon-trash red-color"></span>
+                                            </md-button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-8 col-sm-12" ng-hide="(uploaderr.queue.length>0)">
+                                <div class="md-block md-input-container">
+                                    <label>Rib </label>
+                                    <input type="file" aria-label="file" nv-file-select="" uploader="uploaderr"
+                                           multiple/>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 col-sm-12">
+                                <table class="mt-md">
+                                    <tr ng-repeat="item4 in uploaderr.queue">
+                                        <td width="25%">
+                                            <label>Rib &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <!--<strong>{{ item4.file.name=generate5+'.'+filename(item4.file.name)-->
+                                                <!--}}</strong>-->
+                                        </td>
+
+                                        <!--<td width="10%" ng-show="uploaderr.isHTML5" nowrap>{{-->
+                                            <!--item4.file.size/1024/1024|number:2 }} MB-->
+                                        <!--</td>-->
+                                        <td width="10%" ng-show="uploaderr.isHTML5">
+                                            <div class="progress" style="margin-bottom: 0;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     ng-style="{ 'width': item4.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td width="5%" class="text-center">
+                                                    <span ng-show="item4.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span ng-show="item4.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span ng-show="item4.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td width="2%">
+
+                                            <md-button class="md-mini"
+                                                    ng-init="item4.file.name=generate5+'.'+filename(item4.file.name);item4.upload();items.rib=item4.file.name;items.succ4=true"
+                                                    ng-click="item4.remove();items.succ4=false">
+                                                <span class="glyphicon glyphicon-trash red-color"></span>
+                                            </md-button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <md-input-container class="md-block">
+                        <md-button id="submit_form" type="submit" ng-disabled="dis"
+                                   class="waves-effect waves-light md-raised md-primary pull-right">
+                            <ng-md-icon icon="save" class="md-icon-left white-color" size="18"></ng-md-icon>
+                            <span>Sauvegarder</span>
+                        </md-button>
+                    </md-input-container>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>
+
+<script>
+    document.createElement('ui-select');
+    document.createElement('ui-select-match');
+    document.createElement('ui-select-choices');
+</script>

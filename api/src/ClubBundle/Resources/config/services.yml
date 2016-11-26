@@ -1,0 +1,16 @@
+services:
+    club.manager:
+        class: ClubBundle\Manager\ClubManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @security.encoder_factory
+          - @security.context
+          - @mailer
+          - @templating
+          - %website_email%
+          - @service_container
+    club_team.manager:
+        class: ClubBundle\Manager\ClubTeamManager
+        arguments:
+          - @doctrine.orm.entity_manager
+          - @service_container

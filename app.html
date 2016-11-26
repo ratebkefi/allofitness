@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Allo Fitness</title>
+    <link rel="icon" type="image/png" href="favi-allofitness.png" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <base href="/allofitness/">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oswald:400,700,300">
+
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <!-- build:css(.) styles/vendor.css -->
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css"/>
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet" href="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/helpers.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <!-- endbuild -->
+
+
+
+
+    <link href="views/count/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body ng-class="isActive('/') ? 'home' : 'page'"  ng-app="alloFitnessApp"  ng-controller="AppCtrl" >
+
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="https://code.angularjs.org/1.0.2/i18n/angular-locale_fr-fr.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="bower_components/angular-file-upload/dist/angular-file-upload.js"></script>
+<script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/slick-carousel/slick/slick.js"></script>
+<script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<!-- <script src="bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>-->
+<script src="bower_components/angular-typer/src/typer.js"></script>
+<script src="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+<script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+<!--<script src="bower_components/please-wait/build/please-wait.js"></script>-->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="app.js"></script>
+<script src="routing.js"></script>
+
+<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>-->
+<script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+<link rel="stylesheet" href="bower_components/angular-google-places-autocomplete/src/autocomplete.css">
+
+<!-- Controllers -->
+<script src="scripts/controllers/app.ctrl.js"></script>
+<script src="scripts/controllers/homeController.js"></script>
+<script src="scripts/controllers/clubController.js"></script>
+<script src="scripts/controllers/coachController.js"></script>
+<script src="scripts/controllers/listcoachController.js"></script>
+<script src="scripts/controllers/listclubController.js"></script>
+<script src="scripts/controllers/activatCompte.js"></script>
+<script src="scripts/controllers/memberController.js"></script>
+<script src="scripts/controllers/spaceClubController.js"></script>
+<script src="scripts/controllers/loginController.js"></script>
+
+<!-- service -->
+<script src="scripts/services/homeProvider.js"></script>
+<script src="scripts/services/clubProvider.js"></script>
+<script src="scripts/services/coachProvider.js"></script>
+<script src="scripts/services/communProvider.js"></script>
+<script src="scripts/services/memberProvider.js"></script>
+
+<!-- directives -->
+<script src="scripts/directives/compartoDirective.js"></script>
+<script src="scripts/directives/menuDirective.js"></script>
+<script src="scripts/directives/flippyDirective.js"></script>
+<script src="scripts/directives/starDirective.js"></script>
+
+<!-- filters -->
+<script src="scripts/filters/listFilters.js"></script>
+
+<!-- JS -->
+<script src="scripts/js/es5-sham.min.js"></script>
+<script src="scripts/js/es5-shim.min.js"></script>
+<script src="scripts/js/console-sham.js"></script>
+
+<!-- endbuild -->
+
+
+ <div class="main-content"  ui-view></div>
+
+</body>
+</html>

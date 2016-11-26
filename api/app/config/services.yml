@@ -1,0 +1,8 @@
+parameters:
+#    parameter_name: value
+
+services:
+    jms_serializer.object_constructor:
+        alias: jms_serializer.doctrine_object_constructor
+        public: false       
+        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

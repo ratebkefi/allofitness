@@ -1,0 +1,124 @@
+<!-- Full Body Container -->
+<div id="container">
+    <!-- Start Header Section -->
+    <header class="clearfix " ng-class="headerActive()" >
+
+        <!-- Start Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Start Contact Info -->
+                        <ul class="connexion pull-right" ng-if="!connected">
+                            <li>
+                                <md-button ng-click="loginModel()" >
+                                    <i class="fa fa-user" aria-hidden="true"></i> s’identifier
+                                </md-button>
+                             </li>
+                        </ul>
+                        <ul class="connexion pull-right" ng-if="connected">
+                            <li>
+                                <md-button ng-click="logout()" >
+                                    <i class="fa fa-user" aria-hidden="true"></i> logout
+                                </md-button>
+                            </li>
+                        </ul>
+                        <!-- End Contact Info -->
+                    </div>
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .top-bar -->
+        <!-- End Top Bar -->
+
+
+        <!-- Start  Logo & Naviagtion  -->
+        <div class="navbar navbar-default navbar-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Stat Toggle Nav Link For Mobiles -->
+                    <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+                        <!--<i class="fa fa-bars"></i>-->
+                    <!--</button>-->
+                    <!-- End Toggle Nav Link For Mobiles -->
+                    <a class="navbar-brand" ui-sref="index"  >
+                        <img alt="" src="images/logo.png">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse" menu-active>
+                    <!-- Start Navigation List -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a  ui-sref="index"  class="waves-effect waves-light">Accueil</a></li>
+                        <li><a  ui-sref="index.addclub"  class="waves-effect waves-light" >clubs</a></li>
+                        <li><a  ui-sref="index.addcoach"  class="waves-effect waves-light" >coachs</a></li>
+                        <li><a class="hide" href="#">activités</a></li>
+                        <li><a class="hide"  href="#">annonces</a></li>
+                        <li><a class="hide"  href="#">news</a></li>
+                        <li><a  class="hide"  href="#">contact</a></li>
+                        <li><a  class="hide"  href="#" class="cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <!-- End Navigation List -->
+                </div>
+            </div>
+
+            <nav class="menu-opener" ng-click="toggle = !toggle" ng-class="{'active' : toggle}">
+                <div class="menu-opener-inner" ng-class="{'active' : toggle}"></div>
+            </nav>
+            <nav class="menu" ng-class="{'active' : toggle}">
+                <ul class="menu-inner">
+                    <a  ui-sref="index"  class="waves-effect waves-light menu-link">Accueil</a>
+                    <a  ui-sref="index.addclub"  class="waves-effect waves-light menu-link" >clubs</a>
+                    <a  ui-sref="index.addcoach"  class="waves-effect waves-light menu-link" >coachs</a>
+                    <a class="hide menu-link" href="#">activités</a>
+                    <a class="hide menu-link"  href="#">annonces</a>
+                    <a class="hide menu-link"  href="#">news</a>
+                    <a  class="hide menu-link"  href="#">contact</a>
+                    <a  class="hide menu-link"  href="#" class="cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Start -->
+            <!--<ul class="wpb-mobile-menu">-->
+                <!--<li><a ui-sref="index"  class="waves-effect waves-light">Accueil</a></li>-->
+                <!--<li><a ui-sref=".addclub"  class="waves-effect waves-light" >clubs</a></li>-->
+                <!--<li><a ui-sref=".addcoach"  class="waves-effect waves-light" >coachs</a></li>-->
+                <!--<li><a href="#">activités</a></li>-->
+                <!--<li><a href="#">annonces</a></li>-->
+                <!--<li><a href="#">news</a></li>-->
+                <!--<li><a href="#">contact</a></li>-->
+                <!--<li><a href="#" class="cart"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>-->
+            <!--</ul>-->
+            <!-- Mobile Menu End -->
+
+        </div>
+        <!-- End Header Logo & Naviagtion -->
+
+    </header>
+    <!-- End Header Section -->
+
+
+<!--SOCIAL NETWORK-->
+<!--<div class="social">-->
+    <!--<ul>-->
+        <!--<li>-->
+            <!--<a href="#" class="twt">-->
+                <!--<i class="fa fa-twitter"></i>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#" class="fb">-->
+                <!--<i class="fa fa-facebook"></i>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#" class="ytb">-->
+                <!--<i class="fa fa-youtube-play"></i>-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+</div>

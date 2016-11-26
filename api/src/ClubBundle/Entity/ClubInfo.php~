@@ -1,0 +1,214 @@
+<?php
+
+namespace ClubBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ClubInfo
+ *
+ * @ORM\Table(name="club_info")
+ * @ORM\Entity(repositoryClass="ClubBundle\Repository\ClubInfoRepository")
+ */
+class ClubInfo
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CommunBundle\Entity\ListPackage", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_package", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idPackage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ClubBundle\Entity\ClubNetwork", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_network", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idNetwork;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ClubBundle\Entity\ListClubFunction", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="responsible_function", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idFunction;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CommunBundle\Entity\Adress", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_adress", referencedColumnName="id")
+     */
+    private $idAdress;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ClubBundle\Entity\ListClubType", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_type", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idType;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="club_name", type="string", length=200)
+     */
+    private $clubName;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ClubBundle\Entity\ClubAccess", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_access", referencedColumnName="id")
+     */
+    private $idAccess;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="ClubBundle\Entity\ClubActivitiesAmenitiesConfortServices", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_club_activities_amenities", referencedColumnName="id")
+     */
+    private $idClubActivitiesAmenitiesConfortServices;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name_responsible", type="string", length=150)
+     */
+    private $firstNameResponsible;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name_responsible", type="string", length=150)
+     */
+    private $lastNameResponsible;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=45)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cellphone", type="string", length=45, nullable=true)
+     */
+    private $cellphone;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_of_the_person_contacted", type="string", length=255)
+     */
+    private $emailOfThePersonContacted;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_of_the_person_contacted_cc", type="string", length=255, nullable=true)
+     */
+    private $emailOfThePersonContactedCc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_site", type="string", length=255)
+     */
+    private $urlSite;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presentation_1", type="text", nullable=true)
+     */
+    private $presentation1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presentation_2", type="text", nullable=true)
+     */
+    private $presentation2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presentation_3", type="text", nullable=true)
+     */
+    private $presentation3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presentation_4", type="text", nullable=true)
+     */
+    private $presentation4;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="number_discovery_pass", type="integer", nullable=true)
+     */
+    private $numberDiscoveryPass;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_add", type="datetime", nullable=true)
+     */
+    private $dateAdd;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="invitation_and_discovery_pass", type="integer", nullable=true)
+     */
+    private $invitationAndDiscoveryPass;
+
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $idUser;
+
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="moy_reviews", type="float", scale=2, options={"default"=0})
+     */
+    private $moyReviews;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ClubBundle\Entity\ClubMedia", mappedBy="idClub", cascade={"remove"})
+     */
+    private $clubMedia;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CommunBundle\Entity\ListArea", inversedBy="clubInfo")
+     * @ORM\JoinColumn(name="id_area", referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $idArea;
+
+}
